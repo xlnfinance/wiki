@@ -6,39 +6,40 @@ You can increase blocktime or change gas cost along with other network settings.
 
 ## Local Simulation
 
-`./install` then run `./simulate` to bootstrap local dev blockchain with 4 validators on different ports (8443, 8001, 8002, 8003) each having one Fair share. Other nodes 8004-8008 are regular user wallets. Demoapp is NodeJS demo exchange with deposit/withdraw functions. 
+`./install` then run `./simulate` to bootstrap local dev blockchain with 4 validators on different ports (8443, 8001, 8002, 8003) each having one Fair share. Other nodes 8004-8008 are regular user wallets. Demoapp is NodeJS demo exchange with deposit/withdraw functions.
 
-![/wiki/pm2result.png](/wiki/pm2result.png)
+![/img/pm2result.png](/img/pm2result.png)
 
 To optimize the development `wallet` serves html for all other nodes and everyone runs the same code from src, only datadirs are different (each node executes blocks).
 
 8443 is also a hub @main. At bootstrap there are various end-2-end tests performed on a live network, which is a great way to see if all components fit together. Different users at different times turn on different times and verify the result with setTimeout.
 
+## Contribute
 
+It's recommended to use Prettier, you can add it to Sublime Text (don't forget to `yarn global add prettier`)
 
 ## Using live network
 
 Perfect way to run new code against old blockchain:
 
 ```
-rm -rf fs
-id=fs
+rm -rf fair
+id=fair
 f=Fair-1.tar.gz
 mkdir $id && cd $id && curl https://fairlayer.com/$f -o $f
 tar -xzf $f && rm $f
-ln -s ~/work/fs/node_modules
-ln -s ~/work/fs/wallet/node_modules wallet/node_modules
+ln -s ~/work/fair/node_modules
+ln -s ~/work/fair/wallet/node_modules wallet/node_modules
 rm -rf ./src
-ln -s ~/work/fs/src
-node fs -p8001
+ln -s ~/work/fair/src
+node fair -p8001
 ```
-
 
 ## Reading the codebase
 
-Fairlayer has small codebase by design, about 5000 LOC. Less code, less bugs and technical debt. 
+Fairlayer has small codebase by design, about 5000 LOC. Less code, less bugs and technical debt.
 
-`/bin` - binary tools 
+`/bin` - binary tools
 
 `/dist` - compiled wallet frontend
 
@@ -54,12 +55,4 @@ Fairlayer has small codebase by design, about 5000 LOC. Less code, less bugs and
 
 Start with `/src/fair.js`.
 
-
-
-
-
-
-# [Home](/wiki/README.md)
-
-
-
+# [Home](/img/README.md)

@@ -16,12 +16,12 @@ Hashlocks is a condition/clause which can be satisfied by having an unlocked sec
 
 Two arrays of hashlocks are added right into dispute proof, i.e. they are directly signed as part of the state. The first array has inward hashlocks for Left user, and the second for Right user.
 
-![/wiki/proof.png](/wiki/proof.png)
+![/img/proof.png](/img/proof.png)
 
 
 
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)
 
 
 

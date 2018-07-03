@@ -7,7 +7,7 @@ Two layered blockchains are much harder to understand and reason about, so let's
 Fair uses identity-based consensus which is a subset of Proof-of-Stake.
  There is an array K.members (K is the main configuration object) which contains details about current validators and `shares` field that says what voting power they currently have (the goal is to have 1 identity 1 share).
 
-![/wiki/step1.png](/wiki/step1.png)
+![/wiki/step1.png](/img/step1.png)
 
 
 Initially there will be 4 servers in different countries hosted with different cloud providers on domains **fairlayer.{com,org,net,network}** each having 25 shares.
@@ -66,7 +66,7 @@ Now all nodes, hub #1 including, have an insurance object in their onchain datab
 
 Since the ondelta is 5000 and offdelta is still 0 (the default), all those 5k can be redeemed and taken back by the 2nd user by starting an onchain dispute. Note that unlike Lightning we do not need any funding tx and can simply start the dispute without any signed proof which would automatically assume the default state (offdelta = 0 nonce = 0).
 
-![/wiki/step2.png](/wiki/step2.png)
+![/wiki/step2.png](/img/step2.png)
 
 
 ## Our first offchain payment
@@ -94,7 +94,7 @@ Let's say we send just one transition that says "reduce offdelta by $10" which w
 
 User 1 now holds a signed proof that means they own $10 in the channel and are guaranteed to be able to claim them. Now user 1 must return same signed message with valid ackSig and no transitions to acknowledge the acceptance of new state (so both users hold the signature for the same state).
 
-![/wiki/step3.png](/wiki/step3.png)
+![/wiki/step3.png](/img/step3.png)
 
 
 ## Mediated transfers
@@ -111,7 +111,7 @@ After hundreds or thousands of offchain "coffee" payments we end up with #2 user
 
 123 still does not exist onchain, and there is no collateral locked in between 123 and 1. Which means all $1000 are uninsured.
 
-![/wiki/step4.png](/wiki/step4.png)
+![/wiki/step4.png](/img/step4.png)
 
 
 ## Bad hub: enforceable uninsured balance
@@ -122,7 +122,7 @@ If they had an insurance locked up, they would be guaranteed to take the money a
 
 After a dispute period the blockchain sees that 123 is an honest user and based on resulting delta (0 -1000 = -1000) assigns a Debt object on the hub #1. The debt says "take 1000 FRD from the hub as soon as they get any assets and deposit them to onchain balance of 123".
 
-**Therefore the hub cannot censor a specific user** and this is the major reason why Fairlayer is created as a separate blockchain and not written on top of Bitcoin's LN. This enforceability is the most important difference between [**uninsured** and **trusted** balances.](/wiki/4_four_balances.md)
+**Therefore the hub cannot censor a specific user** and this is the major reason why Fairlayer is created as a separate blockchain and not written on top of Bitcoin's LN. This enforceability is the most important difference between [**uninsured** and **trusted** balances.](/img/4_four_balances.md)
 
 ## Good hub: rebalance
 
@@ -142,7 +142,7 @@ After getting a valid withdrawal proof from #2, the hub crafts a batch that look
 
 Note that the hub must rebalance to `1@123` not to `123@1` because the hub is trying to insure the uninsured and must deposit **from hub's side of the channel**, not just to give new insurance unconditionally.
 
-![/wiki/step5.png](/wiki/step5.png)
+![/wiki/step5.png](/img/step5.png)
 
 
 ## Rebalance being executed
@@ -155,7 +155,7 @@ When we are making a deposit to left user we must do the same change to `ondelta
 
 Also tiny part of the rebalance to new users goes to their onchain balance for their own safety, because it's required to make an onchain tx.
 
-![/wiki/step6.png](/wiki/step6.png)
+![/wiki/step6.png](/img/step6.png)
 
 ## Recap
 
@@ -177,4 +177,4 @@ Remember that the credit line 123 to 1 is hard capped at $1000? What if 2 wants 
 
 The more withdrawals and deposits you combine in a single tx, the less fee per user you will be paying.
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)

@@ -30,4 +30,4 @@ It used to be a common practice to bloat the blockchain with unnecessary throw-a
 
 In Fairlayer we believe onchain space is precious (once again: all nodes are full nodes), and recommend to have just one account onchain per identity, and every payment must include an invoice tag that refers to the motivation of this payment (user id or order id). This invoice is private when sent offchain, and public when rebalanced onchain. 
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)

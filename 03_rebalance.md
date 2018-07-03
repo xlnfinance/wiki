@@ -16,7 +16,7 @@ So the job of rebalance is to ensure at any time the user has as lowest uninsure
 
 It's up to a hub to decide from which channel it wants to withdraw. The simplest way is to sort by amounts hub owns and select the biggest ones above K.risk. E.g. the hub owns $800 with Alice, $800 with Bob and $56 with Carol, $2 with Ingrid.
 
-![/wiki/spenderstoreceivers.png](/wiki/spenderstoreceivers.png)
+![/img/spenderstoreceivers.png](/img/spenderstoreceivers.png)
 
 In this scenario the hub makes only two requests to Alice and Bob to request a mutual withdrawal proof "the nice way". The amounts with Carol and Ingrid are too small so the hub doesn't touch them.
 
@@ -53,5 +53,5 @@ Those tricks would allow the hub to be more effective, present lower TR for its 
 
 
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)
 

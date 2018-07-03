@@ -69,4 +69,4 @@ Updates are great for short-term (<10 years) and smart contracts can flourish in
 
 Smart contracts are good for showcasing and as a playground for things like Cryptokitties, but for production usage people would eventually take a successful smart contract use case and implement it natively into an update.
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)

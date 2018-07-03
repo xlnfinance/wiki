@@ -71,11 +71,11 @@ All upgrades, even as simple as changing the color of a button, are delivered th
 
 ## Where is the catch? There must be a trade-off!
 
-![/wiki/risktriangle.jpg](/wiki/risktriangle.jpg)
+![/img/risktriangle.jpg](/img/risktriangle.jpg)
 
 Like mentioned early, Fairlayer introduces a concept of **uninsured balances** which has similarities with fractional reserve. 
 
-Note, that uninsured balance is enforceable unlike trusted/custodian balance [(see a chapter on 4 types of balances to learn more)](/wiki/4_four_balances.md).
+Note, that uninsured balance is enforceable unlike trusted/custodian balance [(see a chapter on 4 types of balances to learn more)](/img/4_four_balances.md).
 
 That's the balance you have a digital proof for, but the onchain layer does not have locked up collateral for you. Which means the hub **might become insolvent and you will never be able to withdraw your uninsured funds**. There are various techniques such as streaming and rebalances for risk management to reduce uninsured balances. We expect insolvencies and hub compromises to be rare and have contained damages below $1M.
 
@@ -93,9 +93,9 @@ There are two types of exchanges. Onchain exchange is perfect for large atomic s
 
 ## Can I accept/send Fair assets on my website?
 
-Yes, and it's very easy. You just need to run a local Fair node (takes less than 1 minute to bootstrap a full node) and 10-30 lines of code. [See the chapter on Receive/Pay integration API.](/wiki/9_receive_and_pay.md)
+Yes, and it's very easy. You just need to run a local Fair node (takes less than 1 minute to bootstrap a full node) and 10-30 lines of code. [See the chapter on Receive/Pay integration API.](/img/9_receive_and_pay.md)
 
 
 **Feel free to create an issue if you have another question**
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)

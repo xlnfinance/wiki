@@ -95,4 +95,4 @@ Offchain sends may be unconditional ("addrisk" without hashlock, cheaper to serv
 
 **Offchain risk streamed** 
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)

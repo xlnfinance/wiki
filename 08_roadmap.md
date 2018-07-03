@@ -46,4 +46,4 @@ Once in X blocks all validators must create a meta signature for last X blocks w
 
 7. Sharding (per asset): each full node subscribes to specific assets and only receives this asset related rebalances/disputes etc.
 
-# [Home](/wiki/README.md)
+# [Home](/img/README.md)
