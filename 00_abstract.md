@@ -1,4 +1,4 @@
-# Extended Lightning Network (XLN) and Fairlayer 
+# Extended Lightning Network (XLN) and Fairlayer
 
 ## Abstract
 
@@ -12,8 +12,7 @@ Our paramount priority is security and censorship resistance even from validator
 
 **This is the reference client** and no formal specification is planned. If you want to learn how something works just look into the code.
 
-Fairlayer is developed entirely as an end-to-end solution having a full-node, layer2 protocol and default wallet all under one roof working seamlessly. Isomorphic codebase covers different use cases: a wallet, an explorer, a hub and a validator node. 
-
+Fairlayer is developed entirely as an end-to-end solution having a full-node, layer2 protocol and default wallet all under one roof working seamlessly. Isomorphic codebase covers different use cases: a wallet, an explorer, a hub and a validator node.
 
 # FAQ
 
@@ -21,7 +20,7 @@ Fairlayer is developed entirely as an end-to-end solution having a full-node, la
 
 Scalability. Indeed, there are tons of new blockchains these days that claim to be scalable, but almost all of them compromise security and decentralization, increase the blocksize and create a set of high-tps authority nodes that do all the processing for you.
 
-Fairlayer is drastically different. Everyone is a full node, and all payments are taken to the second layer (offchain), which has infinite scalability. 
+Fairlayer is drastically different. Everyone is a full node, and all payments are taken to the second layer (offchain), which has infinite scalability.
 
 The second killer feature is our focus on stable coins. We believe the commerce will never embrace volatile assets such as Bitcoin, **that's why Fair Dollar can make you feel like you are using Paypal**, except the fees are 30-50x times lower and there are no chargebacks.
 
@@ -47,13 +46,13 @@ No, we don't believe in promises. We believe in math and code. **Whenever in dou
 
 ## But you do expect FRD to be stable?
 
-Correct. [There were multiple ideas how to create a stable coin.](https://hackernoon.com/stablecoins-designing-a-price-stable-cryptocurrency-6bf24e2689e5). We utilize a hybrid of Tether and Basis approach: the assets are both collateralized accross a wide range of exchanges and bank accounts AND seignorage (FRB) sold to support the peg if there's a compromise in some accounts that hold the collateral. 
+Correct. [There were multiple ideas how to create a stable coin.](https://hackernoon.com/stablecoins-designing-a-price-stable-cryptocurrency-6bf24e2689e5). We utilize a hybrid of Tether and Basis approach: the assets are both collateralized accross a wide range of exchanges and bank accounts AND seignorage (FRB) sold to support the peg if there's a compromise in some accounts that hold the collateral.
 
 It is impossible to avoid compromises as currently USD can only exist on top of centralized ledgers and custodian banks, and there's simply nothing we can do to protect the funds other than making our best effort. Whenever a large chunk of collateral is lost we will be selling FRB funds to cover the losses.
 
 ## What is the price expectation for FRB?
 
-Since at some point in the future FRB is expected to turn into FRD, its price is expected to start around 0.001 and go up to 0.999999 nearing the maturity date in 2030 (**Unix timestamp 1913370000**). It might hit 0.5 in 2020, or in 2029, or never. 
+Since at some point in the future FRB is expected to turn into FRD, its price is expected to start around 0.001 and go up to 0.999999 nearing the maturity date in 2030 (**Unix timestamp 1913370000**). It might hit 0.5 in 2020, or in 2029, or never.
 
 The success of FRB is based on the success of Fairlayer adoption, that's why it's called a "bet". FRB, just like any asset, can be moved instantly via payment channels and sold any time before 2030 to another entity. By the date of maturity all assets must be withdrawn from payment channels to onchain balances.
 
@@ -73,7 +72,7 @@ All upgrades, even as simple as changing the color of a button, are delivered th
 
 ![/img/risktriangle.jpg](/img/risktriangle.jpg)
 
-Like mentioned early, Fairlayer introduces a concept of **uninsured balances** which has similarities with fractional reserve. 
+Like mentioned early, Fairlayer introduces a concept of **uninsured balances** which has similarities with fractional reserve.
 
 Note, that uninsured balance is enforceable unlike trusted/custodian balance [(see a chapter on 4 types of balances to learn more)](/img/4_four_balances.md).
 
@@ -89,13 +88,12 @@ Yes, we will never compromise on this property. All laptops and mobile phones mu
 
 ## Is there an exchange built-in?
 
-There are two types of exchanges. Onchain exchange is perfect for large atomic swaps between Fair assets (see Exchange tab) and is already working. Offchain exchange (through payment channels) is more complicated and will be implemented later. It will have same scalability as centralized exchanges but without the counterparty risk. 
+There are two types of exchanges. Onchain exchange is perfect for large atomic swaps between Fair assets (see Exchange tab) and is already working. Offchain exchange (through payment channels) is more complicated and will be implemented later. It will have same scalability as centralized exchanges but without the counterparty risk.
 
 ## Can I accept/send Fair assets on my website?
 
 Yes, and it's very easy. You just need to run a local Fair node (takes less than 1 minute to bootstrap a full node) and 10-30 lines of code. [See the chapter on Receive/Pay integration API.](/img/9_receive_and_pay.md)
 
-
 **Feel free to create an issue if you have another question**
 
-# [Home](/img/README.md)
+# [Home](/README.md)

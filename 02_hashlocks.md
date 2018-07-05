@@ -6,9 +6,9 @@ The main benefit of offchain scaling is ability to instantly send money at almos
 
 Original Lightning has proposed a mesh network that would somehow magically route and rebalance itself, but we've not seen it come to true. Fairlayer **may** be used in a mesh-network fashion, but we know for sure centralized hubs are inevitable.
 
-The problem it creates is how do we do the transfer from Alice to Hub then Hub to Bob in a trustless manner? Hub can easily take the money from Alice and never forward it to Bob. We need an in-protocol enforcement for passing the payment forward. 
+The problem it creates is how do we do the transfer from Alice to Hub then Hub to Bob in a trustless manner? Hub can easily take the money from Alice and never forward it to Bob. We need an in-protocol enforcement for passing the payment forward.
 
-Lightning proposed a solution based on Hashed Timelocked Contracts (HTLC, but we call them hashlocks for simplicity). 
+Lightning proposed a solution based on Hashed Timelocked Contracts (HTLC, but we call them hashlocks for simplicity).
 
 ## Hashlock construction
 
@@ -18,11 +18,4 @@ Two arrays of hashlocks are added right into dispute proof, i.e. they are direct
 
 ![/img/proof.png](/img/proof.png)
 
-
-
-
-# [Home](/img/README.md)
-
-
-
-
+# [3. Rebalance](/03_rebalance.md) / [Home](/README.md)

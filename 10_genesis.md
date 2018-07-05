@@ -55,4 +55,4 @@ Fairlayer has small codebase by design, about 5000 LOC. Less code, less bugs and
 
 Start with `/src/fair.js`.
 
-# [Home](/img/README.md)
+# [2. Step by step](/11_step_by_step.md) / [Home](/README.md)

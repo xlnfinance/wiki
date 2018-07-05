@@ -5,14 +5,13 @@ Two layered blockchains are much harder to understand and reason about, so let's
 ## Genesis
 
 Fair uses identity-based consensus which is a subset of Proof-of-Stake.
- There is an array K.members (K is the main configuration object) which contains details about current validators and `shares` field that says what voting power they currently have (the goal is to have 1 identity 1 share).
+There is an array K.members (K is the main configuration object) which contains details about current validators and `shares` field that says what voting power they currently have (the goal is to have 1 identity 1 share).
 
 ![/wiki/step1.png](/img/step1.png)
 
-
 Initially there will be 4 servers in different countries hosted with different cloud providers on domains **fairlayer.{com,org,net,network}** each having 25 shares.
 
-This means if one of the servers goes Byzantine, the system is still safe. Obviously, the network is entirely centralized on day 1 and our job is to distribute those shares to public identities within next 3 years. 
+This means if one of the servers goes Byzantine, the system is still safe. Obviously, the network is entirely centralized on day 1 and our job is to distribute those shares to public identities within next 3 years.
 
 ## First snapshot
 
@@ -22,7 +21,7 @@ During blockchain growth, each `K.snapshot_after_bytes` (we don't say exact valu
 
 ## Native assets: FRD & FRB
 
-These assets are generated during genesis, and each validator is given a small chunk of money on their onchain balances (which is represented in `onchain/db.sqlite` which all full nodes maintain exact copy of). Now they can send it onchain to other accounts the traditional way, but that is a slow and inefficient way for value transfers. 
+These assets are generated during genesis, and each validator is given a small chunk of money on their onchain balances (which is represented in `onchain/db.sqlite` which all full nodes maintain exact copy of). Now they can send it onchain to other accounts the traditional way, but that is a slow and inefficient way for value transfers.
 
 We are all about offchain so let's do offchain.
 
@@ -54,26 +53,25 @@ Then it sees all the actions inside the batch and executes it. Our action is `de
 
 Each node checks are we left user or right by comparing 1 & 2 public keys. Let's say 2 is left user, which means each node now substracts 5000 from 2's onchain balance, creates a new record in "insurances" table in onchain db with parameters leftId=2 rightId=1 insurance=5000 and ondelta=5000. Also 2's account nonce is bumped by 1 to prevent replay attacks.
 
-Note that `ondelta` is a special field that helps to move the delta onchain. 
+Note that `ondelta` is a special field that helps to move the delta onchain.
 
-**Delta is the delimiter that intuitively says who owns what.** Everything to the left of delta belongs to left user, to the right to right. 
+**Delta is the delimiter that intuitively says who owns what.** Everything to the left of delta belongs to left user, to the right to right.
 
-You only touch ondelta when you deposit/withdraw **from the left user**. When you deposit/withdraw from the right side of the channel, you just do the action to insurance only. See delta_demo in `fairlayer/demos` repo if that's unclear. 
+You only touch ondelta when you deposit/withdraw **from the left user**. When you deposit/withdraw from the right side of the channel, you just do the action to insurance only. See delta_demo in `fairlayer/demos` repo if that's unclear.
 
 ## Insurance is ready
 
-Now all nodes, hub #1 including, have an insurance object in their onchain database that says "user 2 has 5k in deposit to user 1". 
+Now all nodes, hub #1 including, have an insurance object in their onchain database that says "user 2 has 5k in deposit to user 1".
 
 Since the ondelta is 5000 and offdelta is still 0 (the default), all those 5k can be redeemed and taken back by the 2nd user by starting an onchain dispute. Note that unlike Lightning we do not need any funding tx and can simply start the dispute without any signed proof which would automatically assume the default state (offdelta = 0 nonce = 0).
 
 ![/wiki/step2.png](/img/step2.png)
 
-
 ## Our first offchain payment
 
 Things are getting complicated, right? Let's start with most basic direct offchain payment: 2 pays $10 to 1 (hub) unconditionally.
 
-**Offchain payments are all about moving offdelta**. Moved offdelta means moved delta (delta = ondelta + offdelta) which means different dispute outcome. 
+**Offchain payments are all about moving offdelta**. Moved offdelta means moved delta (delta = ondelta + offdelta) which means different dispute outcome.
 
 The fact that you own signed offdelta (dispute proof) with highest nonce gives you strong confidence that you own the money as you can start a dispute and take them back to your onchain balance.
 
@@ -83,10 +81,10 @@ The code triggers `flushChannel(user 1)` that finds all pending payments. It cre
 
 Transition message looks like this:
 
-* asset id we operate with
-* ackSig (the signature of the last known state, in our case it would be default offdelta=0 state)
-* array of transitions to perform with the state, each transition is [method to perform, arguments, sig of the resulting state]
-* debug (optional) - contains our own original state, our final state, our last signed state just to see any discrepencies in states during debugging.
+- asset id we operate with
+- ackSig (the signature of the last known state, in our case it would be default offdelta=0 state)
+- array of transitions to perform with the state, each transition is [method to perform, arguments, sig of the resulting state]
+- debug (optional) - contains our own original state, our final state, our last signed state just to see any discrepencies in states during debugging.
 
 In production, the state itself is never sent. All nodes exchange is arrays of transitions each having an action to do and a resulting signature. Both nodes are supposed to end up with equally deterministic states anyway.
 
@@ -95,7 +93,6 @@ Let's say we send just one transition that says "reduce offdelta by $10" which w
 User 1 now holds a signed proof that means they own $10 in the channel and are guaranteed to be able to claim them. Now user 1 must return same signed message with valid ackSig and no transitions to acknowledge the acceptance of new state (so both users hold the signature for the same state).
 
 ![/wiki/step3.png](/img/step3.png)
-
 
 ## Mediated transfers
 
@@ -112,7 +109,6 @@ After hundreds or thousands of offchain "coffee" payments we end up with #2 user
 123 still does not exist onchain, and there is no collateral locked in between 123 and 1. Which means all $1000 are uninsured.
 
 ![/wiki/step4.png](/img/step4.png)
-
 
 ## Bad hub: enforceable uninsured balance
 
@@ -136,14 +132,13 @@ In practice there would be thousands of net-spenders and thousands of net-receiv
 
 After getting a valid withdrawal proof from #2, the hub crafts a batch that looks like:
 
-* setAsset = FRD (choose an asset to operate in)
-* withdrawFrom - array of withdrawals with signatures and amounts
-* depositTo - array of deposits with amounts and destinations. giveTo=1 withPartner=123.
+- setAsset = FRD (choose an asset to operate in)
+- withdrawFrom - array of withdrawals with signatures and amounts
+- depositTo - array of deposits with amounts and destinations. giveTo=1 withPartner=123.
 
 Note that the hub must rebalance to `1@123` not to `123@1` because the hub is trying to insure the uninsured and must deposit **from hub's side of the channel**, not just to give new insurance unconditionally.
 
 ![/wiki/step5.png](/img/step5.png)
-
 
 ## Rebalance being executed
 
@@ -169,12 +164,12 @@ Same logic is applied to any other asset, just the asset_id stored in dispute an
 
 Remember that the credit line 123 to 1 is hard capped at $1000? What if 2 wants to send large amount $3000 to 123 (or to their own onchain balance)? Sometimes it would be possible offchain (with streaming), but let's say the capacity is exhausted. Now it's possible to do the same thing like rebalance but in reverse order.
 
-1. 2 asks hub 1 nicely for $3000 withdrawal proof. (Can start a dispute if #1 is unresponsive)
+1.  2 asks hub 1 nicely for $3000 withdrawal proof. (Can start a dispute if #1 is unresponsive)
 
-2. Crafts a batch transaction with depositTo: 123@1
+2.  Crafts a batch transaction with depositTo: 123@1
 
-3. Insurance in 123@1 is increased by 3000 and ondelta is untouched. Now 123 owns 3995, all insured.
+3.  Insurance in 123@1 is increased by 3000 and ondelta is untouched. Now 123 owns 3995, all insured.
 
 The more withdrawals and deposits you combine in a single tx, the less fee per user you will be paying.
 
-# [Home](/img/README.md)
+# [12. Threat model](/12_threat_model.md) / [Home](/README.md)

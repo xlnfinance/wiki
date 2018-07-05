@@ -1,49 +1,67 @@
-# Tech Roadmap
+# Roadmap
 
 ## Genesis (Q3 2018)
 
-Centralized.
+**Fairlayer starts as entirely centralized network**, just like any PoW cryptocurrency. There are 4 validators having 25 shares each. 99 shares are guaranteed to be distributed within first 2 years to public identities 1-for-1 with verified social presence. After that the 100 validators must bring on 9900 more validators over next 5-10 years (onboarding 3 at a time) reaching our goal of 10k validators with **practically unhackable attack surface and 3333 entities Byzantine tolerance.**
 
+Originally there will be only 1 verified hub @main in order to smooth the initial UX, support first users and collect necessary analytics. As soon as we have strong understanding how to make the hub and the rebalances more effective, everyone will be allowed to register their own hub and the topology of hubs will grow organically (perhaps even turning into mesh at times).
 
-## Asset creation
+Our priority is to get **just two things right** at genesis:
 
+- secure payment channels network - to let users see and use the killer feature from day1
+
+- reliable onchain governance protocol - everything else can be added with governance afterwards
+
+## Exchanges and Payment gateways (2018-2030)
+
+Our attention and marketing will be split 50/50 primarily on just two things:
+
+- **buying/selling the assets.** adding to exchanges and making it seamless to buy and sell FRD/FRB and other Fair assets. The final goal is having in-wallet paypal-like deposit and withdrawal user experience with minimum hassle.
+
+- **spending the assets**. onboarding merchants and everyone who accepts payments on Fair to let them enjoy instant payments with tiny fees without custodian payments. Most merchants are expected to accept stable assets such as FRD.
 
 ## Web and mobile wallets
 
+Desktop platforms (Windows/macOS/Linux) and servers are #1 priority (and their security model is held up to the highest standard), but it's obvious how important mobile platforms are. Web & mobile wallets will be released **Q1-Q4 2019**, in different flavors with different security models.
 
-## Hub creation
+## Asset creation
 
-By this time, we are supposed to have enough data based on usage of @main hub.
+There are two native assets FRD & FRB created at genesis. Custom asset creation will be turned on in Q4 2019.
 
+## Hub creation (Q2-Q4 2019)
+
+By this time, we are supposed to have enough data based on usage of @main hub. Entering in partnership with existing payment processors to migrate their tech-savvy user base and run their hub inside the Fair layer. Tech-savvy users are incentivized to enjoy decentralized nature and having a signed proof at all times while payment gateways are incentivized to get a spot inside developing hub & spoke ecosystem and start earning offchain fees.
 
 ## Decentralization: 2/3+ of shares are distributed
 
+After Foundation giving up 2/3+ of shares the platform reaches "singularity" and from that point can self-develop on its own (they can even delete Foundation itself using onchain governance). In absolute worst case all shares must be given up before **Q3 2020**, but depending on public interest it should happen much earlier.
 
+## Alternative full-node software: 2020+
 
-## New wallet/hub implementation
+It's true that Javascript is not exactly fastest or safest language. But with two-layered architecture it is not a show-stopper: no matter how slow onchain is, offchain will always be scalable and instant, only Total Risk may get high. However once we figure out what's lacking the most in current software, we must write new full node implementation from scratch in a safe, efficient and static-typed language such as Rust.
 
+## Fair Names / Fair Login (2020+)
 
+Decentralized DNS, identity and login. Very important features, but unfortunatelly low user traction of ENS/namecoin tells us that it's something you can only offer to large existing user base and the network effect is the king here.
 
+## Atomic Multipath Payments (2020+)
 
+Pionered by bitcoin's LN, AMP is a neat way to use multiple routes to send single payments. However we believe it's only helpful in super rare edge cases hence given low priority.
 
+## Backup servers for encrypted dispute proofs (2019+)
 
-Some features that would be nice at some point in the future (deployed via smart updates).
+Losing channel db is equivalent to losing cash. Integrating seamlessly by default it into the wallet is required to be usable by general public.
 
-1. Superblocks jump (signatures)
+## Watchtowers (2019+)
 
-Once in X blocks all validators must create a meta signature for last X blocks which would allow offline clients to sync a lot faster and verify X times less signatures. I.e. for 1000 validators in 1000 blocks now a full node must perform 1 M sig verifications (a pretty expensive operation). With a jump only 1000 checks are needed.
+To watch chain and finish a dispute on your behalf
 
-2. Watchtowers (to watch chain and finish a dispute on your behalf)
+## Superblocks (2020+)
 
-3. Backup servers that store your encrypted channel db (free/for a fee)
+Once in X blocks all validators must create an aggregated meta signature for last X blocks which would allow offline clients to sync a lot faster and verify X times less precommit signatures. I.e. for 1000 validators in 1000 blocks now a full node must perform 1 M sig verifications (a pretty expensive operation). With a jump only 1000 checks are needed.
 
+## Sharding (per asset) (2020+)
 
-4. Atomic Multipath Payments
+Each full node subscribes to specific assets and only receives this asset related rebalances/disputes etc: you still have entire history and supply transparency of every Ruble, but you don't care about Rupiah and don't process Rupiah-related tx.
 
-5. Fair Names (like ENS and Namecoin. Ensure protection from name squotting via oracles)
-
-6. Fair Login: return signed login token derived from the seed
-
-7. Sharding (per asset): each full node subscribes to specific assets and only receives this asset related rebalances/disputes etc.
-
-# [Home](/img/README.md)
+# [9. API](/09_receive_and_pay.md) / [Home](/README.md)

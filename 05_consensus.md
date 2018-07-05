@@ -10,7 +10,7 @@ Most people focus on the fact that it's energy wasteful, yes, but that's not the
 
 There's no way to "fix" proof of work. No algorithm change can achieve better stake distribution in a long term. Any algorithm is optimizable, ASIC-able, and gravitates to centralized entities. The fact that they have no incentive to compromise the ledger right now isn't a guarantee it can't happen in the future, nor it guarantees they won't be coerced into doing that (China can hack Bitcoin any time now https://medium.com/@homakov/how-to-destroy-bitcoin-with-51-pocked-guide-for-governments-83d9bdf2ef6b)
 
-That's why our consensus of choice is proof of stake, where stake is represented by identity. Our validators are  verified by master of ceremony. Pretty much like proof of authority (we mostly agree with points raised in blog posts of https://poa.network/) but the "authority" word has bad flavor so let's stick to PoS.
+That's why our consensus of choice is proof of stake, where stake is represented by identity. Our validators are verified by master of ceremony. Pretty much like proof of authority (we mostly agree with points raised in blog posts of https://poa.network/) but the "authority" word has bad flavor so let's stick to PoS.
 
 However, at some point in the future, we might release experimental "classic" version of this system which would be mineable, just because so many people prefer the old school approach.
 
@@ -36,7 +36,7 @@ Now let's try to build the specification around that.
 
 Each round we deterministically decide who proposes a new block. That's pretty easy: we take Unix timestamp, divide by blocktime:
 
-`epoch = Math.floor(timestamp() / blocktime)` 
+`epoch = Math.floor(timestamp() / blocktime)`
 
 `current_validator = epoch % validators.length`
 
@@ -52,4 +52,4 @@ This simple approach guarantees there won't be forks if 2/3+ are honest. But...
 
 It is not so easy. Imagine, the malicious validator received the signatures and went offline forever. The whole network is now in a dead lock, because they never received the valid block back but locked in on this height so cannot continue building a new one.
 
-# [Home](/img/README.md)
+# [6. Smart Updates](/06_smart_updates.md) / [Home](/README.md)

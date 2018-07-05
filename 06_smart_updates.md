@@ -10,11 +10,11 @@ This is what Wikipedia says about smart contracts. However, the contract is "A c
 
 Which leads to the fact that **smart contract is neither smart nor contract**.
 
-So what it really is? It is a **deterministic sandboxed program** which is executed on all machines to achieve same state as everyone else's. Most likely it's a bytecode handled by a virtual machine such as the EVM. 
+So what it really is? It is a **deterministic sandboxed program** which is executed on all machines to achieve same state as everyone else's. Most likely it's a bytecode handled by a virtual machine such as the EVM.
 
 The EVM claims to be Turing complete, so you can code a lot more different scenarios than with bitcoin scripts for example (which is very limited in opcodes and tooling). The EVM is created in response to the fact that **you cannot add new functionality to bitcoin because there's no onchain governance or pretty much any governance at all. Design is "set in stone".**
 
-With the EVM you was supposed to be able to run same node software forever, because all the new EVM bytecode programs can be run by it, be it news feed, voting platform, a game or anything. 
+With the EVM you was supposed to be able to run same node software forever, because all the new EVM bytecode programs can be run by it, be it news feed, voting platform, a game or anything.
 
 **It didn't come out this way.** Ethereum is being hardforked regularly, which diminishes the idea of the EVM and its set-in-stone design. Hardfork requires massive cooperation off-chain, requires "weak subjectivity" as they call it, and ends up with just installing whatever is being uploaded to this URL `https://github.com/ethereum/go-ethereum`.
 
@@ -32,32 +32,31 @@ Any user can propose a change in platform formatted as: description in text, cod
 
 After that there's a voting period for days/weeks when validators can place votes on this proposal (yes/no). When the time comes blockchain looks at approval rate, and if it's over `K.supermajority` the code is executed with `eval` and the patch is merged with `patch`. The node is reloaded, and now the functionality is provided natively.
 
-
 # Pros of Updates
 
-* updates cover 99% of blockchain usecases. Validators only merge common valid use cases, **but they will not merge one-off toys w/o value like cryptokitties**
+- updates cover 99% of blockchain usecases. Validators only merge common valid use cases, **but they will not merge one-off toys w/o value like cryptokitties**
 
-* updates are much easier to write as they are using long known language such as JS/Go/Ruby etc (whatever the node is written in)
+- updates are much easier to write as they are using long known language such as JS/Go/Ruby etc (whatever the node is written in)
 
-* they are faster to execute (because there's no virtualization factor) - they are close to the metal and can be written even in assembler for bottle neck parts.
+- they are faster to execute (because there's no virtualization factor) - they are close to the metal and can be written even in assembler for bottle neck parts.
 
-* they can use a wider range of tools, such as Graph DB, RDBMS and so on, when smart contracts are limited to key-value contract storage which struggle to support even basic things like many-to-many relationships, SQL JOIN searches and so on.
+- they can use a wider range of tools, such as Graph DB, RDBMS and so on, when smart contracts are limited to key-value contract storage which struggle to support even basic things like many-to-many relationships, SQL JOIN searches and so on.
 
-* easier to cooperate between different updates: they all exist in same space (full node software) and can call each other directly, skipping the CALL and encoding stuff of eth contracts
+- easier to cooperate between different updates: they all exist in same space (full node software) and can call each other directly, skipping the CALL and encoding stuff of eth contracts
 
-* you can add functionality smart contracts are simply not capable off: delayed jobs, adjusting blocksize/tax/tx format dynamically etc. Eg with state channels: in eth you need to explicitly withdraw the money and spend extra onchain tx, in Fairlayer it is a `delayed` record in database that acts as a `crontab` that automatically withdraws your money if no disputing delta proof has been shown by the counterparty.
+- you can add functionality smart contracts are simply not capable off: delayed jobs, adjusting blocksize/tax/tx format dynamically etc. Eg with state channels: in eth you need to explicitly withdraw the money and spend extra onchain tx, in Fairlayer it is a `delayed` record in database that acts as a `crontab` that automatically withdraws your money if no disputing delta proof has been shown by the counterparty.
 
-* explicit gas estimation - each method can be priced manually with eg `takeTax(inputs * K.input_price)`, which is more lightweight than counting gas step by step in the EVM.
+- explicit gas estimation - each method can be priced manually with eg `takeTax(inputs * K.input_price)`, which is more lightweight than counting gas step by step in the EVM.
 
 # Pros of Smart Contracts
 
-* No need to get approval from validators for your "generic" use case. If your use case is very unique you still can code it and just submit for everyone to execute. 
+- No need to get approval from validators for your "generic" use case. If your use case is very unique you still can code it and just submit for everyone to execute.
 
-* No need to wait for delay period as well - you just do contract creation, and it's ready to use
+- No need to wait for delay period as well - you just do contract creation, and it's ready to use
 
 # Conclusion
 
-In theory, using the VM for executing arbitrary programs supports just about any use case. In practice, however, as we've seen there are **very few use cases that people actually need** (absolute majority of contracts in eth are ERC 20 tokens - something updates could add natively much more efficiently). 
+In theory, using the VM for executing arbitrary programs supports just about any use case. In practice, however, as we've seen there are **very few use cases that people actually need** (absolute majority of contracts in eth are ERC 20 tokens - something updates could add natively much more efficiently).
 
 **It's also true that we cannot foresee all the use cases right now**, so that's why complete set-in-stone of Bitcoin has let us down over time - looking at Lightning Network you can see **a terrible complexity** for something that could just be added natively to the blockchain itself (in Fairlayer the 2nd and 1st layer are tailored to each other)
 
@@ -69,4 +68,4 @@ Updates are great for short-term (<10 years) and smart contracts can flourish in
 
 Smart contracts are good for showcasing and as a playground for things like Cryptokitties, but for production usage people would eventually take a successful smart contract use case and implement it natively into an update.
 
-# [Home](/img/README.md)
+# [7. Other differences](/07_other_differences.md) / [Home](/README.md)

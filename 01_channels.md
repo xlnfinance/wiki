@@ -14,7 +14,7 @@ Let's say asset=1 (FRD), amountToDeposit=$6, giveTo=user id 5, withPartner=user 
 
 After broadcasting and being included into a block, this onchain tx, just like any other onchain event, must be processed by all full nodes of the blockchain.
 
-**Each node parses** the batch's tx one by one and sees "depositTo" instruction (see `process_tx.js`). It reads the asset id, then deducts the amountToDeposit from onchain balance of `signer` (the user who created this tx), and deposits it to the channel's `insurance` between 5 and 7. We are going to refer to this channel as 5@7, where the first comes is the one from which side you deposit. 
+**Each node parses** the batch's tx one by one and sees "depositTo" instruction (see `process_tx.js`). It reads the asset id, then deducts the amountToDeposit from onchain balance of `signer` (the user who created this tx), and deposits it to the channel's `insurance` between 5 and 7. We are going to refer to this channel as 5@7, where the first comes is the one from which side you deposit.
 
 ## Left and Right users
 
@@ -31,16 +31,16 @@ First, we increase `insurance+=amountToDeposit`, the total amount of money locke
 
 ## Delta = ondelta + offdelta
 
-After finding Lightning's commitment tx and Raiden's balance proofs approach inconvenient for rebalancing, we designed  a simpler approach..
+After finding Lightning's commitment tx and Raiden's balance proofs approach inconvenient for rebalancing, we designed a simpler approach..
 
-Imagine a x-axis with `.` being 0. 
+Imagine a x-axis with `.` being 0.
 
-Then lets draw our `insurance` equal 6 on it, starting from 0 
+Then lets draw our `insurance` equal 6 on it, starting from 0
 
 `.======`
 
-Now let's add delta equal 6 (| means delta). 
- 
+Now let's add delta equal 6 (| means delta).
+
 `.======|`
 
 This visual representation is fairly intuitive: everything from the left of delta separator belongs to left user, and other part to the right. So the 6 insurance `=` bricks now belong to 5, the left user.
@@ -108,13 +108,11 @@ resolveChannel = (insurance, delta, is_left = true) => {
 }
 ```
 
-
 ## Canonical state (dispute proof)
 
 In order to make our first payment, we must figure out the common canonical representation of a state channel. We don't need to bother to use actual onchain tx like they do in Lightning, we also don't want to send always changing balance of the counterparty like in Raiden. All we care about is offdelta.
 
 ```
-
   var state = [
     map('disputeWith'),
     [
@@ -158,9 +156,6 @@ me.envelope(
 
 ## Visual Playground
 
-See `/wallet/demodelta.html` to see ondelta/offdelta movements in action.
+Check `demo_delta.html` in demos to see ondelta/offdelta movements in action.
 
-
-# [Home](/img/README.md)
-
-
+# [2. Hashlocks](/01_hashlocks.md) / [Home](/README.md)
