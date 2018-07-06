@@ -1,5 +1,7 @@
 # Extended Lightning Network (XLN) and Fairlayer
 
+![/img/risktriangle.jpg](/img/risktriangle.jpg)
+
 ## Abstract
 
 In this document we're going to propose a concept and its implementation: a non-opinionated Layer2 scalability technique for blockchains **Extended Lightning Network (XLN)** and opinionated two-layered payment network **Fairlayer**, which is the first blockchain to implement XLN out-of-box.
@@ -8,11 +10,9 @@ The novelty of XLN idea is extending the original Lightning Network with credit 
 
 Fairlayer, on another hand, is a quite opinionated XLN implementation that aims to fix other issues with blockchains other than just scalability. Some parts of Fairlayer such as Proof-of-Authority can come off as controversary, but bear in mind XLN (the generic scaling concept) can be immitated on top of Bitcoin and most of other blockchains albeit in a much more limited fashion than Fairlayer does it.
 
-Our paramount priority is security and censorship resistance even from validator majority, which is why we require absolutely all nodes including consumer devices to be fully-verifying nodes. Thankfully, our full node is designed to routinely run on everything from cheap smartphones to cloud servers and the first "Fair" layer is cheap to keep up with.
+Our paramount priority is security and censorship resistance even from validator majority, which is why we require absolutely all nodes including consumer devices to be fully-verifying nodes. Thankfully, our full node is designed to routinely run on everything from cheap smartphones to cloud servers and the first "Fair" layer is breeze to keep up with in background.
 
-**This is the reference client** and no formal specification is planned. If you want to learn how something works just look into the code.
-
-Fairlayer is developed entirely as an end-to-end solution having a full-node, layer2 protocol and default wallet all under one roof working seamlessly. Isomorphic codebase covers different use cases: a wallet, an explorer, a hub and a validator node.
+**There is only reference client** and no formal specification at the moment. If you want to learn how something works just look into the code, the wiki or ask.
 
 # FAQ
 
@@ -62,15 +62,13 @@ A virtual machine for smart contracts was proposed to solve one simple issue: la
 
 More than that, as history shows, onchain governance and software upgrades are inevitable. Traditional software upgrades are centralized (Github releases published by a single person, for example) and prone to compromise.
 
-**That's why in Fairlayer any functionality upgrade is implemented through "smart updates" aka onchain governance** - a set of description, code and patch which validators can vote for.
+That's why in Fairlayer any functionality upgrade is implemented through **smart updates** (onchain governance) - a set of description, code and patch which validators can vote for.
 
 Smart updates are written in the native language (Javascript), they are easy to read & code and they have no VM overhead. They are a lot more powerful than a virtual machine, they can introduce a new database, a new native binding or, well, they can add a virtual machine for smart contracts too if validators ever decide it's time.
 
 All upgrades, even as simple as changing the color of a button, are delivered through onchain governance for integrity & security.
 
 ## Where is the catch? There must be a trade-off!
-
-![/img/risktriangle.jpg](/img/risktriangle.jpg)
 
 Like mentioned early, Fairlayer introduces a concept of **uninsured balances** which has similarities with fractional reserve.
 
@@ -94,6 +92,14 @@ There are two types of exchanges. Onchain exchange is perfect for large atomic s
 
 Yes, and it's very easy. You just need to run a local Fair node (takes less than 1 minute to bootstrap a full node) and 10-30 lines of code. [See the chapter on Receive/Pay integration API.](/img/9_receive_and_pay.md)
 
+## Are hubs and validators different things?
+
+Yes, but some can be both. Validators protect the onchain layer: propose and sign on blocks, and we need a lot of validators with 1 stake each to reduce the risk of a fork (you need to hijack 1/3+ which is 34 validators out of 100).
+
+Hubs exist in offchain layer, they mediate transfers and rebalance insurance once in a while. Anyone can start a hub, but to become a validator you need to be elected by current validator majority (2/3+ votes for your node).
+
+Validators are held up to higher standard, they must be well verified, independent and honest: compromised onchain layer is a game over, while broken offchain layer is mere inconvenience.
+
 **Feel free to create an issue if you have another question**
 
-# [Home](/README.md)
+# [1. Channels](/01_channels.md) / [Home](/README.md)

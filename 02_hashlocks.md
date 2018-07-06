@@ -12,10 +12,12 @@ Lightning proposed a solution based on Hashed Timelocked Contracts (HTLC, but we
 
 ## Hashlock construction
 
-Hashlocks is a condition/clause which can be satisfied by having an unlocked secret in the blockchain state. Hashlocks consist of [amount, hash, expiration]. Currently we use `sha256` as hashing alg.
+Hashlocks is a condition/clause which can be satisfied by having an unlocked secret in the blockchain state (there's a registry for preimages store temporarily, inspired by Sprites). Hashlocks consist of [amount, hash, expiration]. Currently we use `sha256` as hashing alg.
 
 Two arrays of hashlocks are added right into dispute proof, i.e. they are directly signed as part of the state. The first array has inward hashlocks for Left user, and the second for Right user.
 
 ![/img/proof.png](/img/proof.png)
+
+## The process
 
 # [3. Rebalance](/03_rebalance.md) / [Home](/README.md)

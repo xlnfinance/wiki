@@ -14,11 +14,11 @@ Our priority is to get **just two things right** at genesis:
 
 ## Exchanges and Payment gateways (2018-2030)
 
-Our attention and marketing will be split 50/50 primarily on just two things:
+There are two sides to a successful payment network, and that's where all our marketing efforts will go 50/50:
 
-- **buying/selling the assets.** adding to exchanges and making it seamless to buy and sell FRD/FRB and other Fair assets. The final goal is having in-wallet paypal-like deposit and withdrawal user experience with minimum hassle.
+- **buying/selling the assets (trading).** adding to exchanges and making it seamless to buy and sell FRD/FRB and other Fair assets. The final goal is having in-wallet paypal-like deposit and withdrawal user experience with minimum hassle.
 
-- **spending the assets**. onboarding merchants and everyone who accepts payments on Fair to let them enjoy instant payments with tiny fees without custodian payments. Most merchants are expected to accept stable assets such as FRD.
+- **spending the assets (adoption)**. onboarding merchants and their customers on Fair. Paypal, credit cards and alike are our direct competitors here. The rationale to choose us over them is 30-50x times lower fees, instant settlement and technical superiority and soundness of the decentralized architecture. Most merchants are expected to accept stable assets such as FRD.
 
 ## Web and mobile wallets
 
@@ -26,7 +26,7 @@ Desktop platforms (Windows/macOS/Linux) and servers are #1 priority (and their s
 
 ## Asset creation
 
-There are two native assets FRD & FRB created at genesis. Custom asset creation will be turned on in Q4 2019.
+There are two native assets FRD & FRB created at genesis. Custom asset creation will be turned on in Q4 2018.
 
 ## Hub creation (Q2-Q4 2019)
 
@@ -42,11 +42,11 @@ It's true that Javascript is not exactly fastest or safest language. But with tw
 
 ## Fair Names / Fair Login (2020+)
 
-Decentralized DNS, identity and login. Very important features, but unfortunatelly low user traction of ENS/namecoin tells us that it's something you can only offer to large existing user base and the network effect is the king here.
+Decentralized DNS, identity and login. Very important infrastructure projects, but unfortunatelly low user traction of ENS/namecoin tells us that it's something you can only offer to large existing user base and the network effect is the king here.
 
 ## Atomic Multipath Payments (2020+)
 
-Pionered by bitcoin's LN, AMP is a neat way to use multiple routes to send single payments. However we believe it's only helpful in super rare edge cases hence given low priority.
+Pionered by bitcoin's LN, AMP is a neat way to use multiple routes to send single payment atomically. However we believe it's only helpful in super rare edge cases hence given low priority.
 
 ## Backup servers for encrypted dispute proofs (2019+)
 
@@ -62,6 +62,6 @@ Once in X blocks all validators must create an aggregated meta signature for las
 
 ## Sharding (per asset) (2020+)
 
-Each full node subscribes to specific assets and only receives this asset related rebalances/disputes etc: you still have entire history and supply transparency of every Ruble, but you don't care about Rupiah and don't process Rupiah-related tx.
+Each full node subscribes to specific assets and only receives this asset related rebalances/disputes, e.g. you still have entire history and supply transparency of every RubleToken, but you don't care about RupiahToken and don't process RupiahToken-related tx.
 
 # [9. API](/09_receive_and_pay.md) / [Home](/README.md)

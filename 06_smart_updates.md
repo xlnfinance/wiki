@@ -22,9 +22,13 @@ With the EVM you was supposed to be able to run same node software forever, beca
 
 On top of that the EVM itself is very hard to use, all high level languages are immature with bugs ranging from <a href="https://medium.com/@homakov/make-ethereum-blockchain-again-ef73c5b86582">trivial race conditions</a> to library method visibility (parity bugs) - something you just don't get in languages with proven track records, because that would be too easy to catch just by looked at the code. **That will/can be improved over time, but not any time soon**
 
-# (Smart) updates
+# Making updates smart
 
 Not long after that, people came to realization that maybe what we need is not a "Turing complete" VM that will never be updated and set in stone, **but a clear process to update the underlying platform, the blockchain itself** aka onchain governance.
+
+![/img/contracts.png](/img/contracts.png)
+
+![/img/updates.png](/img/updates.png)
 
 This was proposed by Tezos, Dfinity and many others to come. Fairlayer also uses smart udpates.
 

@@ -52,6 +52,12 @@ If 10 exchanges have hard_limit at $10k, you can deposit to them up to $100k and
 
 After it becomes apparent the hub is compromised and insolvent, the users would have to cover the losses on their own (that's why the balance is called uninsured). Your total profits will be equal total uninsured balances + the hard limits you managed to exhaust with automatic exchange services.
 
+3.  Mass exit
+
+4)  Exit-scams by hubs
+
+Hubs are putting their identity at stake in order to have credit limits opened to them. The higher the trust, the bigger credit limits users will open.
+
 ## Infrastructure
 
 What every other blockchain misses, is that the way software is installed and updated is just as important as consensus itself.

@@ -22,7 +22,7 @@ Let's try to formalize these 4 types of balances we're talking about.
 
 **Security: Highest Possible**
 
-Onchain balance cannot be taken from you under no plausible attack, period. Only a hardfork or onchain governance decision could seize your onchain balance. You can go offline for years and it still will be assigned to your pubkey. Can be assigned a multisig vault (n/m signatures required)
+Onchain balance cannot be taken from you under no plausible attack, period. Only a hardfork or smart update decision could seize your onchain balance. You can go offline for years and it still will be assigned to your pubkey. Can be assigned a multisig vault (n/m signatures required)
 
 **Usability: Lowest Possible**
 

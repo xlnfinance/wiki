@@ -1,12 +1,14 @@
 # Payment channels
 
-Payment channels is the cheapest & lowest-latency (1 HTTP request) known way to make a payment without touching the blockchain but still having the security of it. In this chapter we will explain our payment channels protocol, and how it was carefully optimized step-by-step for atomic hashlocks, multiple assets and batched rebalances.
+Payment channels is the cheapest & lowest-latency (1 HTTP request) known way to make a payment without touching the blockchain but still having the security of it. In this chapter we will explain our payment channels protocol, and rationale of each design detail.
+
+It's helpful to think of a payment channel as of your traditional bank deposit, but also having a signed enforceable proof from your bank and having your deposit insurance guaranteed by blockchain
 
 Participants commit a specific state between them to a blockchain to start a channel, then do different actions offchain sending specific proofs directly to each other. If any party cheats or becomes unresponsive, the other party can submit latest state to blockchain and gets a fair result (agreed amount of money)
 
 ## Under the hood
 
-All users have payment channels with everyone else by default with `insurance=0` and no payments can happen, so we don't use the term "open a channel". To start paying through a channel Alice must send a tx onchain that deposits `insurance` into the channel with Hub. Since all tx in Fair are batched, this code will create a new deposit.
+All users have payment channels with everyone else by default with `insurance=0 ondelta=0 offdelta=0` and no payments can happen, so we don't use the term "open a channel". To start paying through a channel Alice must send a tx onchain that deposits `insurance` into the channel with Hub. Since all tx in Fair are batched, this code will create a new deposit.
 
 `batch.push('depositTo', asset, [amountToDeposit, giveTo, withPartner, invoice])`
 
@@ -158,4 +160,4 @@ me.envelope(
 
 Check `demo_delta.html` in demos to see ondelta/offdelta movements in action.
 
-# [2. Hashlocks](/01_hashlocks.md) / [Home](/README.md)
+# [2. Hashlocks](/02_hashlocks.md) / [Home](/README.md)
