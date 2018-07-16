@@ -10,7 +10,7 @@ The novelty of XLN idea is extending the original Lightning Network with credit 
 
 Fairlayer, on another hand, is a quite opinionated XLN implementation that aims to fix other issues with blockchains other than just scalability. Some parts of Fairlayer such as Proof-of-Authority can come off as controversary, but bear in mind XLN (the generic scaling concept) can be immitated on top of Bitcoin and most of other blockchains albeit in a much more limited fashion than Fairlayer does it.
 
-Our paramount priority is security and censorship resistance even from validator majority, which is why we require absolutely all nodes including consumer devices to be fully-verifying nodes. Thankfully, our full node is designed to routinely run on everything from cheap smartphones to cloud servers and the first "Fair" layer is breeze to keep up with in background.
+Our paramount priority is security and censorship resistance even from validator majority, which is why we require absolutely all nodes including consumer devices to be fully-verifying nodes. Thankfully, our full node is designed to routinely run on everything from cheap smartphones to cloud servers and the first "Fair" layer is a breeze to keep up with in background.
 
 **There is only reference client** and no formal specification at the moment. If you want to learn how something works just look into the code, the wiki or ask.
 
@@ -98,7 +98,7 @@ Yes, but some can be both. Validators protect the onchain layer: propose and sig
 
 Hubs exist in offchain layer, they mediate transfers and rebalance insurance once in a while. Anyone can start a hub, but to become a validator you need to be elected by current validator majority (2/3+ votes for your node).
 
-Validators are held up to higher standard, they must be well verified, independent and honest: compromised onchain layer is a game over, while broken offchain layer is mere inconvenience.
+Validators are held to a higher standard, they must be well verified, independent and honest: compromised onchain layer is a game over, while broken offchain layer is mere inconvenience.
 
 **Feel free to create an issue if you have another question**
 

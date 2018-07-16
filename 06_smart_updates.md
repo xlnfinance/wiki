@@ -4,13 +4,19 @@ Fairlayer has no smart contracts, instead it has smart updates (also known as on
 
 Let's figure out what are smart contracts and what problem they solve.
 
-> A smart contract is a computer protocol intended to digitally facilitate, verify, or enforce the negotiation or performance of a contract. Smart contracts allow the performance of credible transactions without third parties. These transactions are trackable and irreversible.[1] Smart contracts were first proposed by Nick Szabo in 1994.[2]
+> A smart contract is a computer protocol intended to digitally facilitate, verify, or enforce the negotiation or performance of a contract. Smart contracts allow the performance of credible transactions without third parties.
 
-This is what Wikipedia says about smart contracts. However, the contract is "A contract is a voluntary arrangement between two or more parties that is enforceable by law as a binding legal agreement" and smart contract doesn't necessarily has two or more parties, doesn't necessarily deals with money or even does anything at all.
+This is what Wikipedia says about smart contracts and:
+
+> A contract is a voluntary arrangement between two or more parties that is enforceable by law as a binding legal agreement
+
+But smart contract doesn't necessarily has two or more parties, doesn't necessarily deals with money or even does anything at all.
 
 Which leads to the fact that **smart contract is neither smart nor contract**.
 
 So what it really is? It is a **deterministic sandboxed program** which is executed on all machines to achieve same state as everyone else's. Most likely it's a bytecode handled by a virtual machine such as the EVM.
+
+![/img/contracts.png](/img/contracts.png)
 
 The EVM claims to be Turing complete, so you can code a lot more different scenarios than with bitcoin scripts for example (which is very limited in opcodes and tooling). The EVM is created in response to the fact that **you cannot add new functionality to bitcoin because there's no onchain governance or pretty much any governance at all. Design is "set in stone".**
 
@@ -22,11 +28,11 @@ With the EVM you was supposed to be able to run same node software forever, beca
 
 On top of that the EVM itself is very hard to use, all high level languages are immature with bugs ranging from <a href="https://medium.com/@homakov/make-ethereum-blockchain-again-ef73c5b86582">trivial race conditions</a> to library method visibility (parity bugs) - something you just don't get in languages with proven track records, because that would be too easy to catch just by looked at the code. **That will/can be improved over time, but not any time soon**
 
-# Making updates smart
+# Making updates smarter
 
-Not long after that, people came to realization that maybe what we need is not a "Turing complete" VM that will never be updated and set in stone, **but a clear process to update the underlying platform, the blockchain itself** aka onchain governance.
+Not long after that, people came to realization that maybe what we need, perhaps, is not a "Turing complete" VM that will never be updated and set in stone, **but a clear process to update the underlying platform, the blockchain itself** aka onchain governance.
 
-![/img/contracts.png](/img/contracts.png)
+Since you need to update the software anyway for optimization, design changes etc, why not kill two birds with one stone? You can deliver both the consensus and optimization changes through unified and multisigned by majority of validators process.
 
 ![/img/updates.png](/img/updates.png)
 
@@ -52,7 +58,7 @@ After that there's a voting period for days/weeks when validators can place vote
 
 - explicit gas estimation - each method can be priced manually with eg `takeTax(inputs * K.input_price)`, which is more lightweight than counting gas step by step in the EVM.
 
-# Pros of Smart Contracts
+# Pros of Contracts
 
 - No need to get approval from validators for your "generic" use case. If your use case is very unique you still can code it and just submit for everyone to execute.
 

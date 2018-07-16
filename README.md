@@ -1,7 +1,3 @@
-# Fairlayer Documentation
-
-This wiki intends to be single source of documentation, better read it in this order:
-
 [0. Abstract & FAQ](/00_abstract.md)
 
 [1. Payment Channels](/01_channels.md)

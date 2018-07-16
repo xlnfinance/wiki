@@ -10,7 +10,7 @@ Our priority is to get **just two things right** at genesis:
 
 - secure payment channels network - to let users see and use the killer feature from day1
 
-- reliable onchain governance protocol - everything else can be added with governance afterwards
+- reliable smart updates - everything else can be added with governance afterwards
 
 ## Exchanges and Payment gateways (2018-2030)
 
@@ -22,7 +22,7 @@ There are two sides to a successful payment network, and that's where all our ma
 
 ## Web and mobile wallets
 
-Desktop platforms (Windows/macOS/Linux) and servers are #1 priority (and their security model is held up to the highest standard), but it's obvious how important mobile platforms are. Web & mobile wallets will be released **Q1-Q4 2019**, in different flavors with different security models.
+Desktop platforms (Windows/macOS/Linux) and servers are #1 priority (and their security model is held to a higher standard), but it's clear how important mobile platforms are. Web & mobile wallets will be released **Q1-Q4 2019**, in different flavors with different security models.
 
 ## Asset creation
 
