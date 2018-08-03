@@ -55,4 +55,37 @@ Fairlayer has small codebase by design, about 5000 LOC. Less code, less bugs and
 
 Start with `/src/fair.js`.
 
+# Runbook
+
+## Deploy FL
+
+```
+./deploy
+```
+
+Ensure https://fairlayer.com/ opens.
+
+#### Troubleshooting
+
+```sh
+./l
+# prints FL logs
+```
+
+## Reconfigure caddy
+
+```
+vi Caddyfile
+caddy -service restart
+```
+
+Ensure https://fairlayer.com/ opens.
+
+#### Troubleshooting
+
+```sh
+journalctl --boot -u Caddy.service
+# prints Caddy logs
+```
+
 # [2. Step by step](/11_step_by_step.md) / [Home](/README.md)

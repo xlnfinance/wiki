@@ -1,6 +1,8 @@
 # Rebalances
 
-The job of hubs other than connecting its users is to ensure the lowest total risk (TR) possible.
+The job of hubs other than connecting its users is to do their best to have lowest total risk (TR) possible.
+
+Since any hub can be hacked any second, they must constantly take insurance from net-spenders and give to net-receivers to reduce the potential damage at any point of time the hack might happen.
 
 TR is a sum of all uninsured balances around a hub. TR of $100k means in worst case scenario when the hub is compromised, the attacker is able to withdraw up to all possible $100k from the channels where hub owns assets and send it to attacker's account. That would create an insolvency of $100k. After that all the promises given by the hub in uninsured balances simply cannot be fulfilled anymore, as the funds that were supposed to be used in rebalance are lost.
 
@@ -46,8 +48,6 @@ Initially rebalance heuristics will be very simple. Over time we will employ muc
 - Have online-presence patterns to get withdrawal proofs from net-spenders earlier than actual rebalance happens
 
 - Optimize for lowest tax paid yet highest volume rebalanced
-
--
 
 Those tricks would allow the hub to be more effective, present lower TR for its user base and therefore be more profitable.
 

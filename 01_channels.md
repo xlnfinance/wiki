@@ -1,6 +1,8 @@
 # Payment channels
 
-Payment channels is the cheapest & lowest-latency (1 HTTP request) known way to make a payment without touching the blockchain but still having the security of it. In this chapter we will explain our payment channels protocol, and rationale of each design detail.
+**Note, while it would be more logical to first describe the consensus, onchain layer, we will start with offchain layer instead as that's the main novelty of Fairlayer.**
+
+Payment channels is the cheapest & fastest way to make a payment without touching the blockchain but still having the security of it. In this chapter we will explain our payment channels protocol, and rationale of each design detail.
 
 It's helpful to think of a payment channel as of your traditional bank deposit, but also having a signed enforceable proof from your bank and having your deposit insurance guaranteed by blockchain
 
