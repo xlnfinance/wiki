@@ -22,7 +22,7 @@ The EVM claims to be Turing complete, so you can code a lot more different scena
 
 With the EVM you was supposed to be able to run same node software forever, because all the new EVM bytecode programs can be run by it, be it news feed, voting platform, a game or anything.
 
-**It didn't come out this way.** Ethereum is being hardforked regularly, which diminishes the idea of the EVM and its set-in-stone design. Hardfork requires massive cooperation off-chain, requires "weak subjectivity" as they call it, and ends up with just installing whatever is being uploaded to this URL `https://github.com/ethereum/go-ethereum`.
+**It didn't come out this way.** Ethereum is being hardforked regularly, which diminishes the idea of the EVM and its set-in-stone design. Hardfork requires massive cooperation off-chain, requires "weak subjectivity" as they call it, and ends up with just installing whatever is being uploaded to this URL `https://gitbank.com/ethereum/go-ethereum`.
 
 **The EVM would be considered properly implemented and "real" if people downloaded geth in 2015 and never updated ever since**. As long as the system requires outside tweaks, new opcodes or new gas estimations (they had DoS-like bug due to gas calculations) - it is basically cheating and **same governance in disguise**.
 

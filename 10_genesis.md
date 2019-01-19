@@ -12,7 +12,7 @@ You can increase blocktime or change gas cost along with other network settings.
 
 To optimize the development `wallet` serves html for all other nodes and everyone runs the same code from src, only datadirs are different (each node executes blocks).
 
-8443 is also a hub @main. At bootstrap there are various end-2-end tests performed on a live network, which is a great way to see if all components fit together. Different users at different times turn on different times and verify the result with setTimeout.
+8443 is also a bank @main. At bootstrap there are various end-2-end tests performed on a live network, which is a great way to see if all components fit together. Different users at different times turn on different times and verify the result with setTimeout.
 
 ## Contribute
 
@@ -31,7 +31,7 @@ tar -xzf $f && rm $f
 ln -s ~/work/fair/node_modules
 ln -s ~/work/fair/wallet/node_modules wallet/node_modules
 rm -rf ./src
-ln -s ~/work/fair/src
+cp -r ~/work/fair/src src
 node fair -p8001
 ```
 

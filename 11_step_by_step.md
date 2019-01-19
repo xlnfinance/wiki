@@ -27,7 +27,7 @@ We are all about offchain so let's do offchain.
 
 ## Channel deposit
 
-The first validator is also a hub `@main` (see K.hubs). Let's say second account wants to deposit money to 2@1 (think of it as '2' account in bank '1' like in email notation).
+The first validator is also a bank `@main` (see K.banks). Let's say second account wants to deposit money to 2@1 (think of it as '2' account in bank '1' like in email notation).
 
 They may do it in console or open up default wallet, visit Onchain tab and type 5000 FRD and destination "2@1" then press Execute Onchain.
 
@@ -41,7 +41,7 @@ The validator adds the batch to their mempool and when it's their time (accordin
 
 ## Sync
 
-Meanwhile, every single full node is trying to stay in sync. Which means they randomly send `sync` requests to backbone nodes: validators, hubs, and other services that have a public URL, 24/7 uptime, beefy servers and are happy to share blocks with others. (this may be changed to more decentralized p2p model in the future)
+Meanwhile, every single full node is trying to stay in sync. Which means they randomly send `sync` requests to backbone nodes: validators, banks, and other services that have a public URL, 24/7 uptime, beefy servers and are happy to share blocks with others. (this may be changed to more decentralized p2p model in the future)
 
 For block to be valid it must be prepended with 2/3+ precommit signatures. So when our node gets a new block, it verifies against local K.members each signature and once the block gains 2/3+ voting power confirming it, we can safely split it into batches and process batches one by one: see `onchain/process_batch.js` that does just that.
 
@@ -49,7 +49,7 @@ For block to be valid it must be prepended with 2/3+ precommit signatures. So wh
 
 Once each full node gets to our batch, it substracts the fee from our onchain balance in their onchain db and sends it to current validator's onchain balance (also known as "miner fee").
 
-Then it sees all the actions inside the batch and executes it. Our action is `depositTo` with giveTo=2 (us) and withPartner=1 (the hub).
+Then it sees all the actions inside the batch and executes it. Our action is `depositTo` with giveTo=2 (us) and withPartner=1 (the bank).
 
 Each node checks are we left user or right by comparing 1 & 2 public keys. Let's say 2 is left user, which means each node now substracts 5000 from 2's onchain balance, creates a new record in "insurances" table in onchain db with parameters leftId=2 rightId=1 insurance=5000 and ondelta=5000. Also 2's account nonce is bumped by 1 to prevent replay attacks.
 
@@ -61,7 +61,7 @@ You only touch ondelta when you deposit/withdraw **from the left user**. When yo
 
 ## Insurance is ready
 
-Now all nodes, hub #1 including, have an insurance object in their onchain database that says "user 2 has 5k in deposit to user 1".
+Now all nodes, bank #1 including, have an insurance object in their onchain database that says "user 2 has 5k in deposit to user 1".
 
 Since the ondelta is 5000 and offdelta is still 0 (the default), all those 5k can be redeemed and taken back by the 2nd user by starting an onchain dispute. Note that unlike Lightning we do not need any funding tx and can simply start the dispute without any signed proof which would automatically assume the default state (offdelta = 0 nonce = 0).
 
@@ -69,7 +69,7 @@ Since the ondelta is 5000 and offdelta is still 0 (the default), all those 5k ca
 
 ## Our first offchain payment
 
-Things are getting complicated, right? Let's start with most basic direct offchain payment: 2 pays $10 to 1 (hub) unconditionally.
+Things are getting complicated, right? Let's start with most basic direct offchain payment: 2 pays $10 to 1 (bank) unconditionally.
 
 **Offchain payments are all about moving offdelta**. Moved offdelta means moved delta (delta = ondelta + offdelta) which means different dispute outcome.
 
@@ -96,47 +96,47 @@ User 1 now holds a signed proof that means they own $10 in the channel and are g
 
 ## Mediated transfers
 
-We definitely do not want users to open a lot of channels. Any onchain operation is super expensive (by design), so we expect an average user to have 1-10 channels with hubs that they are using the most (that operate in the areas they live or do business in).
+We definitely do not want users to open a lot of channels. Any onchain operation is super expensive (by design), so we expect an average user to have 1-10 channels with banks that they are using the most (that operate in the areas they live or do business in).
 
-Now let's try to pay 2 -> 1 -> user 123 (the coffeeshop). Let's say #123 is a new user and just installed our wallet. By default it would open a credit limit of $1000 to the @main hub.
+Now let's try to pay 2 -> 1 -> user 123 (the coffeeshop). Let's say #123 is a new user and just installed our wallet. By default it would open a credit limit of $1000 to the @main bank.
 
 User 2 sends a transition "move offdelta by -10 under a condition that you pay to user #123" with a hashlock. Read the separate chapter on hashlocks as they are just too complicated to elaborate here.
 
-The hub sends same transition to user #123 (who they have open websocket with) where they move offdelta (the direction depends on who's left user in 123@1 channel). Let's say #123 is the right user.
+The bank sends same transition to user #123 (who they have open websocket with) where they move offdelta (the direction depends on who's left user in 123@1 channel). Let's say #123 is the right user.
 
-After hundreds or thousands of offchain "coffee" payments we end up with #2 user spending $1000 and #123 earning that $1000 (forget about hub fees for now).
+After hundreds or thousands of offchain "coffee" payments we end up with #2 user spending $1000 and #123 earning that $1000 (forget about bank fees for now).
 
 123 still does not exist onchain, and there is no collateral locked in between 123 and 1. Which means all $1000 are uninsured.
 
 ![/wiki/step4.png](/img/step4.png)
 
-## Bad hub: enforceable uninsured balance
+## Bad bank: enforceable uninsured balance
 
-**Let's assume our hub tries to censor 123 specifically**, making their channel essentially worthless.
+**Let's assume our bank tries to censor 123 specifically**, making their channel essentially worthless.
 
 If they had an insurance locked up, they would be guaranteed to take the money after a dispute. But since they aren't, lets say they ask some other user to register them and deposit initial $10 on their onchain balance (needed to make onchain tx to start a dispute).
 
-After a dispute period the blockchain sees that 123 is an honest user and based on resulting delta (0 -1000 = -1000) assigns a Debt object on the hub #1. The debt says "take 1000 FRD from the hub as soon as they get any assets and deposit them to onchain balance of 123".
+After a dispute period the blockchain sees that 123 is an honest user and based on resulting delta (0 -1000 = -1000) assigns a Debt object on the bank #1. The debt says "take 1000 FRD from the bank as soon as they get any assets and deposit them to onchain balance of 123".
 
-**Therefore the hub cannot censor a specific user** and this is the major reason why Fairlayer is created as a separate blockchain and not written on top of Bitcoin's LN. This enforceability is the most important difference between [**uninsured** and **trusted** balances.](/img/4_four_balances.md)
+**Therefore the bank cannot censor a specific user** and this is the major reason why Fairlayer is created as a separate blockchain and not written on top of Bitcoin's LN. This enforceability is the most important difference between [**uninsured** and **unsigned** balances.](/img/4_four_balances.md)
 
-## Good hub: rebalance
+## Good bank: rebalance
 
-Knowing that all disputes and debts are public, and all users in the world would immediately see the misbehavior of hub 1, the hub has a more sustainable business being a good actor and doing a rebalance.
+Knowing that all disputes and debts are public, and all users in the world would immediately see the misbehavior of bank 1, the bank has a more sustainable business being a good actor and doing a rebalance.
 
-During a periodic check hub looks up who is riskying the most. 123 has $1000 in uninsured balance and it's time to insure them. But the hub has no assets/liquidity on their own! (Fair hubs do not require any collateral to operate unlike LN hubs).
+During a periodic check bank looks up who is riskying the most. 123 has $1000 in uninsured balance and it's time to insure them. But the bank has no assets/liquidity on their own! (Fair banks do not require any collateral to operate unlike LN banks).
 
-Thus they must withdraw the insurance from users that are net-spenders, such as our #2 user where the hub owns $1000.
+Thus they must withdraw the insurance from users that are net-spenders, such as our #2 user where the bank owns $1000.
 
-In practice there would be thousands of net-spenders and thousands of net-receivers, so a few net-spenders going offline wouldn't be a big deal. But let's assume our #2 user decides to become malicious and refuses to give withdrawal proof: then the hub starts a dispute using their last dispute proof, waits for delay period, and gets the $1000 on their onchain balance from the channel. #2 is motivated to also be a good actor (and be online regularly) because they would lose in fees and their channel would be destroyed (and they would get $4000 back to #2 onchain balance).
+In practice there would be thousands of net-spenders and thousands of net-receivers, so a few net-spenders going offline wouldn't be a big deal. But let's assume our #2 user decides to become malicious and refuses to give withdrawal proof: then the bank starts a dispute using their last dispute proof, waits for delay period, and gets the $1000 on their onchain balance from the channel. #2 is motivated to also be a good actor (and be online regularly) because they would lose in fees and their channel would be destroyed (and they would get $4000 back to #2 onchain balance).
 
-After getting a valid withdrawal proof from #2, the hub crafts a batch that looks like:
+After getting a valid withdrawal proof from #2, the bank crafts a batch that looks like:
 
 - setAsset = FRD (choose an asset to operate in)
 - withdrawFrom - array of withdrawals with signatures and amounts
 - depositTo - array of deposits with amounts and destinations. giveTo=1 withPartner=123.
 
-Note that the hub must rebalance to `1@123` not to `123@1` because the hub is trying to insure the uninsured and must deposit **from hub's side of the channel**, not just to give new insurance unconditionally.
+Note that the bank must rebalance to `1@123` not to `123@1` because the bank is trying to insure the uninsured and must deposit **from bank's side of the channel**, not just to give new insurance unconditionally.
 
 ![/wiki/step5.png](/img/step5.png)
 
@@ -154,7 +154,7 @@ Also tiny part of the rebalance to new users goes to their onchain balance for t
 
 ## Recap
 
-Finally both users are 100% insured and have same security as a Bitcoin balance, the hub made nice fees from thousands offchain payments, and the world processed only 2 tiny transactions: the initial deposit by 2 and the rebalance by hub 1!
+Finally both users are 100% insured and have same security as a Bitcoin balance, the bank made nice fees from thousands offchain payments, and the world processed only 2 tiny transactions: the initial deposit by 2 and the rebalance by bank 1!
 
 The more scale the network gets, the more value-efficient and compact rebalances will get.
 
@@ -164,7 +164,7 @@ Same logic is applied to any other asset, just the asset_id stored in dispute an
 
 Remember that the credit line 123 to 1 is hard capped at $1000? What if 2 wants to send large amount $3000 to 123 (or to their own onchain balance)? Sometimes it would be possible offchain (with streaming), but let's say the capacity is exhausted. Now it's possible to do the same thing like rebalance but in reverse order.
 
-1.  2 asks hub 1 nicely for $3000 withdrawal proof. (Can start a dispute if #1 is unresponsive)
+1.  2 asks bank 1 nicely for $3000 withdrawal proof. (Can start a dispute if #1 is unresponsive)
 
 2.  Crafts a batch transaction with depositTo: 123@1
 

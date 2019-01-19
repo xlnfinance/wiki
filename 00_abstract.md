@@ -28,9 +28,9 @@ The second killer feature is our focus on stable coins. We believe the commerce 
 
 No, it really is nearly infinite and can replace all world value transfers: credit card networks + wire transfes + cash + stock exchange operations etc.
 
-All hubs are uncoupled from each other and only share same settlement layer. Capacity of settlement layer does not dictate the capacity of offchain layer, it only impacts the average Total Risk in the system (sum of all uninsured balances).
+All banks are uncoupled from each other and only share same settlement layer. Capacity of settlement layer does not dictate the capacity of offchain layer, it only impacts the average Total Risk in the system (sum of all uninsured balances).
 
-Thousand hubs with 1k tps = 1M tps, 1 million hubs with 10k tps each = 10 billion tps, and so on. You can always simply optimize the hub software/hardware or just add more granular hubs for a specific geographic area, e.g. hub for USA, hub for New York, or hub covering Brooklyn. Hence, "infinite" linear scalability.
+Thousand banks with 1k tps = 1M tps, 1 million banks with 10k tps each = 10 billion tps, and so on. You can always simply optimize the bank software/hardware or just add more granular banks for a specific geographic area, e.g. bank for USA, bank for New York, or bank covering Brooklyn. Hence, "infinite" linear scalability.
 
 **Fairlayer can technically survive with 1 onchain transaction per minute**, but the Total Risk will be very high.
 
@@ -38,7 +38,7 @@ That's why one way or another Fairlayer is guaranteed to scale to all world tran
 
 ## Is it a new cryptocurrency?
 
-Not really. It's a decentralized platform on top of which you can create your own [crypto]currencies or other tokens (we call them digital assets). **All Fair assets can be deposited into hubs and sent instantly through the network of payment channels**. There are two native assets created at the genesis and managed by the foundation: [FRD (dollar) and FRB (bet)](https://medium.com/fairlayer/invest-in-fairlayer-pre-ico-95f53bb0351d). FRD is also required to pay for onchain tx fees.
+Not really. It's a decentralized platform on top of which you can create your own [crypto]currencies or other tokens (we call them digital assets). **All Fair assets can be deposited into banks and sent instantly through the network of payment channels**. There are two native assets created at the genesis and managed by the foundation: [FRD (dollar) and FRB (bet)](https://medium.com/fairlayer/invest-in-fairlayer-pre-ico-95f53bb0351d). FRD is also required to pay for onchain tx fees.
 
 ## So you promise to redeem FRD for 1 USD?
 
@@ -60,7 +60,7 @@ The success of FRB is based on the success of Fairlayer adoption, that's why it'
 
 A virtual machine for smart contracts was proposed to solve one simple issue: lack of governance process to upgrade the underlying blockchain. We believe smart contracts such as EVM are too complicated to write secure and sophisticated code, produce too much overhead and limitations (gas limits), have steep learning curve and too little use cases.
 
-More than that, as history shows, onchain governance and software upgrades are inevitable. Traditional software upgrades are centralized (Github releases published by a single person, for example) and prone to compromise.
+More than that, as history shows, onchain governance and software upgrades are inevitable. Traditional software upgrades are centralized (Gitbank releases published by a single person, for example) and prone to compromise.
 
 That's why in Fairlayer any functionality upgrade is implemented through **smart updates** (onchain governance) - a set of description, code and patch which validators can vote for.
 
@@ -72,9 +72,9 @@ All upgrades, even as simple as changing the color of a button, are delivered th
 
 Like mentioned early, Fairlayer introduces a concept of **uninsured balances** which has similarities with fractional reserve.
 
-Note, that uninsured balance is enforceable unlike trusted/custodian balance [(see a chapter on 4 types of balances to learn more)](/img/4_four_balances.md).
+Note, that uninsured balance is enforceable unlike unsigned balance [(see a chapter on 4 types of balances to learn more)](/04_four_balances.md).
 
-That's the balance you have a digital proof for, but the onchain layer does not have locked up collateral for you. Which means the hub **might become insolvent and you will never be able to withdraw your uninsured funds**. There are various techniques such as streaming and rebalances for risk management to reduce uninsured balances. We expect insolvencies and hub compromises to be rare and have contained damages below $1M.
+That's the balance you have a digital proof for, but the onchain layer does not have locked up collateral for you. Which means the bank **might become insolvent and you will never be able to withdraw your uninsured funds**. There are various techniques such as streaming and rebalances for risk management to reduce uninsured balances. We expect insolvencies and bank compromises to be rare and have contained damages below $1M.
 
 ## What consensus it uses?
 
@@ -90,13 +90,13 @@ There are two types of exchanges. Onchain exchange is perfect for large atomic s
 
 ## Can I accept/send Fair assets on my website?
 
-Yes, and it's very easy. You just need to run a local Fair node (takes less than 1 minute to bootstrap a full node) and 10-30 lines of code. [See the chapter on Receive/Pay integration API.](/img/9_receive_and_pay.md)
+Yes, and it's very easy. You just need to run a local Fair node (takes less than 1 minute to bootstrap a full node) and 10-30 lines of code. [See the chapter on Receive/Pay integration API.](/09_receive_and_pay.md)
 
-## Are hubs and validators different things?
+## Are banks and validators different things?
 
 Yes, but some can be both. Validators protect the onchain layer: propose and sign on blocks, and we need a lot of validators with 1 stake each to reduce the risk of a fork (you need to hijack 1/3+ which is 34 validators out of 100).
 
-Hubs exist in offchain layer, they mediate transfers and rebalance insurance once in a while. Anyone can start a hub, but to become a validator you need to be elected by current validator majority (2/3+ votes for your node).
+Hubs exist in offchain layer, they mediate transfers and rebalance insurance once in a while. Anyone can start a bank, but to become a validator you need to be elected by current validator majority (2/3+ votes for your node).
 
 Validators are held to a higher standard, they must be well verified, independent and honest: compromised onchain layer is a game over, while broken offchain layer is mere inconvenience.
 

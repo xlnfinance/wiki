@@ -36,25 +36,25 @@ Cartel of onchain governance is probably the hardest problem Fairlayer hasn't so
 
 ## Offchain
 
-As long as onchain layer is correct and 2/3+ of validators are online and honest, it doesn't really matter what happens offchain. All hubs may be compromised at once, and it still wouldn't be a big deal beyond temporary downtime.
+As long as onchain layer is correct and 2/3+ of validators are online and honest, it doesn't really matter what happens offchain. All banks may be compromised at once, and it still wouldn't be a big deal beyond temporary downtime.
 
-**We've prepared a guide for hackers** how to maximize profits if you managed to break into a Fair hub. In short: **take everything you own, promise as much as you can, then leave.**
+**We've prepared a guide for hackers** how to maximize profits if you managed to break into a Fair bank. In short: **take everything you own, promise as much as you can, then leave.**
 
-1.  Withdraw all the assets the hub owns with net-spenders.
+1.  Withdraw all the assets the bank owns with net-spenders.
 
-The hub has "insured" balances with users, which means this funds can be claimed by the hub. Make the hub request withdrawal proofs from all users that are currently online, and use them to depositTo your own account. With offline users you may try to start disputes, but then you can't get access to those funds instantly. Once you've withdrawn everything to your account, start mixing it asap because otherwise our detection scripts may catch you.
+The bank has "insured" balances with users, which means this funds can be claimed by the bank. Make the bank request withdrawal proofs from all users that are currently online, and use them to depositTo your own account. With offline users you may try to start disputes, but then you can't get access to those funds instantly. Once you've withdrawn everything to your account, start mixing it asap because otherwise our detection scripts may catch you.
 
-2.  Promise money on behalf of the hub
+2.  Promise money on behalf of the bank
 
-The whole point of uninsured balances is those are promised. The users define credit hard_limit that limits maximum amount of assets they can lose. You should target other hubs that trust you and instant exchanges where you can instantly sell the promised assets for Bitcoins and withdraw them, because promising fake funds to regular people is very hard to monetize at scale (but could do a few offline fake deals)
+The whole point of uninsured balances is those are promised. The users define credit hard_limit that limits maximum amount of assets they can lose. You should target other banks that trust you and instant exchanges where you can instantly sell the promised assets for Bitcoins and withdraw them, because promising fake funds to regular people is very hard to monetize at scale (but could do a few offline fake deals)
 
 If 10 exchanges have hard_limit at $10k, you can deposit to them up to $100k and sell that for other assets.
 
-After it becomes apparent the hub is compromised and insolvent, the users would have to cover the losses on their own (that's why the balance is called uninsured). Your total profits will be equal total uninsured balances + the hard limits you managed to exhaust with automatic exchange services.
+After it becomes apparent the bank is compromised and insolvent, the users would have to cover the losses on their own (that's why the balance is called uninsured). Your total profits will be equal total uninsured balances + the hard limits you managed to exhaust with automatic exchange services.
 
 3.  Mass exit
 
-4)  Exit-scams by hubs
+4)  Exit-scams by banks
 
 Hubs are putting their identity at stake in order to have credit limits opened to them. The higher the trust, the bigger credit limits users will open.
 
@@ -68,7 +68,7 @@ Fairlayer for desktop can be installed by verifying short cryptographic install 
 
 2.  Decentralized updates
 
-All updates, even small ones like color of a button, are delivered through onchain governance which requires explicit signatures by 2/3+ of validators. This also removes central point of failure (a single compromised maintainer in other blockchains can upload bad code to github)
+All updates, even small ones like color of a button, are delivered through onchain governance which requires explicit signatures by 2/3+ of validators. This also removes central point of failure (a single compromised maintainer in other blockchains can upload bad code to gitbank)
 
 3.  Dependencies
 

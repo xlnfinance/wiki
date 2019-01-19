@@ -2,13 +2,13 @@
 
 Fairlayer was engineered to be ridiculously easy to integrate. It's just one repeating pulling HTTP request to get newly received unprocessed payments and one request to make a payment.
 
-It seamlessly implements both onchain (direct rebalance of insurance from you@hub to receiver@hub channel) and offchain (through payment channels not touching onchain layer) transfers, depending on the amount and how busy the network is.
+It seamlessly implements both onchain (direct rebalance of insurance from you@bank to receiver@bank channel) and offchain (through payment channels not touching onchain layer) transfers, depending on the amount and how busy the network is.
 
 We believe long term only offchain payments will be used, even for large payments, but in the beginning while the onchain space is cheap we also offer direct rebalance.
 
 ## Integration Demos
 
-[Check out this repository with different demos.](https://github.com/fairlayer/demos) No packaged SDK is offered because it would increase your attack surface and the API is very simple.
+[Check out this repository with different demos.](https://gitbank.com/fairlayer/demos) No packaged SDK is offered because it would increase your attack surface and the API is very simple.
 
 ## Authentication
 
@@ -77,7 +77,7 @@ window.addEventListener('message', function(e){
 - `editable` - don't want the user to mess around with parameters? Set to 'none' to disable all fields or to 'amount' if you want to keep amount editable.
 - `origin` - set to `location.origin` if you want to use Fair Login. The login token will be returned via postMessage.
 
-Once the user reviews payment details, enters the amount if needed and clicks Pay, Fairlayer does the rest. Under the hood user's wallet encrypts a specific hash for the public key stored in your address, passes it to the hub, the hub finds websocket towards your daemon, passes the payment with same condition but smaller amount (minus hub's fees), your daemon decrypts the originally encrypted hashlock, returns the secret to the hub (at this point you are guaranteed to get the money, as you have the dispute proof with hashlock that you can unlock in it), the hub returns the secret to the user and now the payment is finished.
+Once the user reviews payment details, enters the amount if needed and clicks Pay, Fairlayer does the rest. Under the hood user's wallet encrypts a specific hash for the public key stored in your address, passes it to the bank, the bank finds websocket towards your daemon, passes the payment with same condition but smaller amount (minus bank's fees), your daemon decrypts the originally encrypted hashlock, returns the secret to the bank (at this point you are guaranteed to get the money, as you have the dispute proof with hashlock that you can unlock in it), the bank returns the secret to the user and now the payment is finished.
 
 The user's wallet makes a postMessage event to the opener to notify your app's about successful payment.
 

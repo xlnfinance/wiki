@@ -6,7 +6,7 @@
 
 [3. Rebalance: insure the uninsured](/03_rebalance.md)
 
-[4. Four balances: onchain, insured, uninsured, trusted](/04_four_balances.md)
+[4. Four balances: onchain, insured, uninsured, unsigned](/04_four_balances.md)
 
 [5. Consensus: Tendermint + PoA](/05_consensus.md)
 
