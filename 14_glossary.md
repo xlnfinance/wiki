@@ -15,7 +15,7 @@ In onchain payments you work with `ondelta`, in offchain payments you modify `of
 When it's below zero, all insurance goes to the right user plus `-delta` in uninsured. When `0 < delta < insurance`, `delta` goes to the left user and `insurance-delta` to the right. When it `delta > insurance` all insurance goes to the left user and the rest `delta - insurance` is in uninsured.
 
 **bank**
-A centralized entity that routes payments instantly in an atomic and non-custodial fashion. You can think of it as bank 2.0 because it cannot steal your money and you always have a dispute proof to enforce and withdraw your assets. Hubs can have channels with other banks which would resemble existing banking sector with nostro/vostro (minus the central banks).
+A centralized entity that routes payments instantly in an atomic and non-custodial fashion. You can think of it as bank 2.0 because it cannot steal your money and you always have a dispute proof to enforce and withdraw your assets. Banks can have channels with other banks which would resemble existing banking sector with nostro/vostro (minus the central banks).
 
 **dispute proof**
 In a bidirectional payment channel both parties send each other sets of transitions that modify the state. This state is signed dispute proof. It is only sent onchain when there is a misbehavior by some party, otherwise they are stored privately as last resort. When all parties are honest only withdrawal proofs are used.

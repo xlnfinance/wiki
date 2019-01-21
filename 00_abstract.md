@@ -4,6 +4,14 @@
 
 ## Abstract
 
+0.  old banking is a network of unsigned state channels
+
+1)  XLN
+
+2)  snapshots and hashed install
+
+3)  full node optimization for consumer devices
+
 In this document we're going to propose a concept and its implementation: a non-opinionated Layer2 scalability technique for blockchains **Extended Lightning Network (XLN)** and opinionated two-layered payment network **Fairlayer**, which is the first blockchain to implement XLN out-of-box.
 
 The novelty of XLN idea is extending the original Lightning Network with credit lines on both sides of a payment channel to solve (or at least significantly alleviate) the capacity problem of LN (the requirement for locking up funds). With credit lines the capacity problem of payment channels is shifted from onchain defined to trust/risk-defined. We believe a payment with higher risk involved is better than no payment at all, which is a common problem with original Lightning.
@@ -60,7 +68,7 @@ The success of FRB is based on the success of Fairlayer adoption, that's why it'
 
 A virtual machine for smart contracts was proposed to solve one simple issue: lack of governance process to upgrade the underlying blockchain. We believe smart contracts such as EVM are too complicated to write secure and sophisticated code, produce too much overhead and limitations (gas limits), have steep learning curve and too little use cases.
 
-More than that, as history shows, onchain governance and software upgrades are inevitable. Traditional software upgrades are centralized (Gitbank releases published by a single person, for example) and prone to compromise.
+More than that, as history shows, onchain governance and software upgrades are inevitable. Traditional software upgrades are centralized (github releases published by a single person, for example) and prone to compromise.
 
 That's why in Fairlayer any functionality upgrade is implemented through **smart updates** (onchain governance) - a set of description, code and patch which validators can vote for.
 
@@ -96,7 +104,7 @@ Yes, and it's very easy. You just need to run a local Fair node (takes less than
 
 Yes, but some can be both. Validators protect the onchain layer: propose and sign on blocks, and we need a lot of validators with 1 stake each to reduce the risk of a fork (you need to hijack 1/3+ which is 34 validators out of 100).
 
-Hubs exist in offchain layer, they mediate transfers and rebalance insurance once in a while. Anyone can start a bank, but to become a validator you need to be elected by current validator majority (2/3+ votes for your node).
+Banks exist in offchain layer, they mediate transfers and rebalance insurance once in a while. Anyone can start a bank, but to become a validator you need to be elected by current validator majority (2/3+ votes for your node).
 
 Validators are held to a higher standard, they must be well verified, independent and honest: compromised onchain layer is a game over, while broken offchain layer is mere inconvenience.
 

@@ -31,7 +31,7 @@ Now bank has accumulated $1600 in withdrawals, $1550 in deposits, and broadcasts
   "batch",
   nonce...
   ["withdrawFrom", [[$800, "Alice", AliceSig], [$800, "Bob", BobSig]]]
-  ["depositTo", [[$1000, Hub, Shop3],[$400, Hub, Shop2],[$150, Hub, Shop1]]]
+  ["depositTo", [[$1000, Bank, Shop3],[$400, Bank, Shop2],[$150, Bank, Shop1]]]
 ]
 ```
 

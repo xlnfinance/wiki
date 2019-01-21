@@ -8,7 +8,7 @@ We believe long term only offchain payments will be used, even for large payment
 
 ## Integration Demos
 
-[Check out this repository with different demos.](https://gitbank.com/fairlayer/demos) No packaged SDK is offered because it would increase your attack surface and the API is very simple.
+[Check out this repository with different demos.](https://github.com/fairlayer/demos) No packaged SDK is offered because it would increase your attack surface and the API is very simple.
 
 ## Authentication
 

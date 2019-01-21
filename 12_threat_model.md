@@ -56,7 +56,7 @@ After it becomes apparent the bank is compromised and insolvent, the users would
 
 4)  Exit-scams by banks
 
-Hubs are putting their identity at stake in order to have credit limits opened to them. The higher the trust, the bigger credit limits users will open.
+Banks are putting their identity at stake in order to have credit limits opened to them. The higher the trust, the bigger credit limits users will open.
 
 ## Infrastructure
 
@@ -68,7 +68,7 @@ Fairlayer for desktop can be installed by verifying short cryptographic install 
 
 2.  Decentralized updates
 
-All updates, even small ones like color of a button, are delivered through onchain governance which requires explicit signatures by 2/3+ of validators. This also removes central point of failure (a single compromised maintainer in other blockchains can upload bad code to gitbank)
+All updates, even small ones like color of a button, are delivered through onchain governance which requires explicit signatures by 2/3+ of validators. This also removes central point of failure (a single compromised maintainer in other blockchains can upload bad code to github)
 
 3.  Dependencies
 

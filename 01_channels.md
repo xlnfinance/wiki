@@ -10,7 +10,7 @@ Participants commit a specific state between them to a blockchain to start a cha
 
 ## Under the hood
 
-All users have payment channels with everyone else by default with `insurance=0 ondelta=0 offdelta=0` and no payments can happen, so we don't use the term "open a channel". To start paying through a channel Alice must send a tx onchain that deposits `insurance` into the channel with Hub. Since all tx in Fair are batched, this code will create a new deposit.
+All users have payment channels with everyone else by default with `insurance=0 ondelta=0 offdelta=0` and no payments can happen, so we don't use the term "open a channel". To start paying through a channel Alice must send a tx onchain that deposits `insurance` into the channel with Bank. Since all tx in Fair are batched, this code will create a new deposit.
 
 `batch.push('depositTo', asset, [amountToDeposit, giveTo, withPartner, invoice])`
 
