@@ -12,6 +12,24 @@
 
 3)  full node optimization for consumer devices
 
+## Onchain methods
+
+Main XLN functionality is elegantly based around just three methods: `deposit`, `withdraw` and `dispute`.
+
+**deposit** is a transfer from signer's onchain balance to either someone else's onchain balance or to their channel on their behalf. It accepts asset, amount, target id, id of partner (if it's a channel, 0 if it's onchain balance) and an optional invoice.
+
+**withdraw** is a withdrawal from a channel adjacent to the signer, i.e. the signer can only withdraw from channels they participate in. It can be used in a combo with `deposit` to simultaneously withdraw X from your bank and deposit X to bank of the destination if your payment is too large to be sent offchain. It accepts asset, amount, id of your partner in a channel, and a valid signature by your partner that shows their **explicit permission to withdraw** from this channel. This signed withdrawal proof also includes a withdrawal_nonce so it cannot be reused (to exhaust the channel quickly).
+
+The combinations of these two methods are supposed to make up 99% of entire blockchain history. Mostly it should be large batched rebalances broadcasted by banks, with hundreds of withdrawal proofs (from net-spenders) on one side and hundreds of deposits (to net-receivers) on the other side.
+
+Very rarely it would be single-withdrawal single-deposit broadcasted by end-users - this should be done only for large amounts when a direct offchain payment wasn't possible.
+
+Other methods are expected to be used much less.
+
+**dispute** if your partner is unresponsive, ignores you or has gone offline, anyone is free to broadcast their latest signed dispute proof. This will fire up a timer lasting for hours/days to give the partner time to broadcast a counter proof with higher dispute_nonce. If it does not happen, the dispute is resolved automatically and the signer gets the assets to their onchain balance.
+
+Insured assets are returned immediately and guaranteed no-matter-what. It attempts to charge uninsured balance from the partner's onchain balance, but if it's empty a Debt object is created on partner's identity. Once partner gets any assets ever again, your debt will be the first in queue to be paid back (first-in-first-out). If the partner has gone forever, your uninsured assets will never be returned. That's part of the threat model, so request insurance wisely and manage your risk exposure.
+
 In this document we're going to propose a concept and its implementation: a non-opinionated Layer2 scalability technique for blockchains **Extended Lightning Network (XLN)** and opinionated two-layered payment network **Fairlayer**, which is the first blockchain to implement XLN out-of-box.
 
 The novelty of XLN idea is extending the original Lightning Network with credit lines on both sides of a payment channel to solve (or at least significantly alleviate) the capacity problem of LN (the requirement for locking up funds). With credit lines the capacity problem of payment channels is shifted from onchain defined to trust/risk-defined. We believe a payment with higher risk involved is better than no payment at all, which is a common problem with original Lightning.
