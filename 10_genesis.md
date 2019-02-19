@@ -22,17 +22,17 @@ It's recommended to use Prettier, you can add it to Sublime Text (don't forget t
 
 Perfect way to run new code against old blockchain:
 
-```
-rm -rf fair
-id=fair
-f=Fair-1.tar.gz
-mkdir $id && cd $id && curl https://fairlayer.com/$f -o $f
-tar -xzf $f && rm $f
-ln -s ~/work/fair/node_modules
-ln -s ~/work/fair/wallet/node_modules wallet/node_modules
-rm -rf ./src
-cp -r ~/work/fair/src src
-node fair -p8001
+```sh
+$ rm -rf fair
+$ id=fair
+$ f=Fair-1.tar.gz
+$ mkdir $id && cd $id && curl https://fairlayer.com/$f -o $f
+$ tar -xzf $f && rm $f
+$ ln -s ~/work/fair/node_modules
+$ ln -s ~/work/fair/wallet/node_modules wallet/node_modules
+$ rm -rf ./src
+$ cp -r ~/work/fair/src src
+$ node fair -p8001
 ```
 
 ## Reading the codebase
@@ -59,8 +59,8 @@ Start with `/src/fair.js`.
 
 ## Deploy FL
 
-```
-./deploy
+```sh
+$ ./deploy
 ```
 
 Ensure https://fairlayer.com/ opens.
@@ -68,15 +68,15 @@ Ensure https://fairlayer.com/ opens.
 #### Troubleshooting
 
 ```sh
-./l
 # prints FL logs
+$ ./l
 ```
 
 ## Reconfigure caddy
 
-```
-vi Caddyfile
-caddy -service restart
+```sh
+$ vi Caddyfile
+$ caddy -service restart
 ```
 
 Ensure https://fairlayer.com/ opens.
@@ -84,8 +84,8 @@ Ensure https://fairlayer.com/ opens.
 #### Troubleshooting
 
 ```sh
-journalctl --boot -u Caddy.service
 # prints Caddy logs
+$ journalctl --boot -u Caddy.service
 ```
 
 # [2. Step by step](/11_step_by_step.md) / [Home](/README.md)
