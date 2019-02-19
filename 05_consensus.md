@@ -36,9 +36,11 @@ Now let's try to build the specification around that.
 
 Each round we deterministically decide who proposes a new block. That's pretty easy: we take Unix timestamp, divide by blocktime:
 
-`epoch = Math.floor(timestamp() / blocktime)`
+```js
+epoch = Math.floor(timestamp() / blocktime)
 
-`current_validator = epoch % validators.length`
+current_validator = epoch % validators.length
+```
 
 This validator must broadcast to everyone else signed block built from tx taken from their mempool, receive signatures back, and as soon as they receive 2/3+ of sigs they can broadcast to all users valid and final block, prepended with commitments from other validators:
 
