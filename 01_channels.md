@@ -12,7 +12,9 @@ Participants commit a specific state between them to a blockchain to start a cha
 
 All users have payment channels with everyone else by default with `insurance=0 ondelta=0 offdelta=0` and no payments can happen, so we don't use the term "open a channel". To start paying through a channel Alice must send a tx onchain that deposits `insurance` into the channel with Bank. Since all tx in Fair are batched, this code will create a new deposit.
 
-`batch.push('depositTo', asset, [amountToDeposit, giveTo, withPartner, invoice])`
+```js
+batch.push('depositTo', asset, [amountToDeposit, giveTo, withPartner, invoice])`
+```
 
 Let's say asset=1 (FRD), amountToDeposit=$6, giveTo=user id 5, withPartner=user id 7 and `invoice` is empty (this field exists for paying large purchases with direct onchain settlement).
 
@@ -26,7 +28,7 @@ For simplicity we want to have deterministic channel where two users can have on
 
 Let's say 5 happened to have lower pubkey and is left one. How do we deposit to 5@7? This is actual code:
 
-```
+```js
 ins.insurance += amount
 if (compared == -1) ins.ondelta += amount
 ```
@@ -59,7 +61,7 @@ Alright, now the ondelta is 6, insurance is 6 and offdelta is still 0.
 
 This function is used to define what parts of balance are insured/uninsured for you and counterparty.
 
-```
+```js
 resolveChannel = (insurance, delta, is_left = true) => {
   var parts = {
     // left user promises only with negative delta, scenario 3
@@ -116,7 +118,7 @@ resolveChannel = (insurance, delta, is_left = true) => {
 
 In order to make our first payment, we must figure out the common canonical representation of a state channel. We don't need to bother to use actual onchain tx like they do in Lightning, we also don't want to send always changing balance of the counterparty like in Raiden. All we care about is offdelta.
 
-```
+```js
   var state = [
     map('disputeWith'),
     [
@@ -147,7 +149,7 @@ Now both parties know that there's collateral/insurance locked between them onch
 
 Internally all payments are expressed in flush_channel and update_channel files. Flush channel finds all pending transitions and applies them on the state, then send the request of following format:
 
-```
+```js
 me.envelope(
       map('update'), // denotes that it is an update message
       asset, // asset id we are operating with

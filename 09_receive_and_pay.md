@@ -20,7 +20,7 @@ You can modify the port Fair daemon occupies on your server. Pass `-pXXXX` to th
 
 Put something like this helper in util libs:
 
-```
+```js
 FairRPC = (params, cb) => {
   http.get('http://127.0.0.1:8002/rpc?auth_code=AUTH_CODE&'+params, (res) => {
     let rawData = '';
@@ -45,7 +45,7 @@ For someone to pay they need destination address, an amount and optional invoice
 
 You can read your own address at bootstrap or have it hardcoded
 
-```
+```js
 FairRPC('method=getinfo', (r)=>{
   console.log('My address', r.address)
 })
@@ -53,7 +53,7 @@ FairRPC('method=getinfo', (r)=>{
 
 Once you have an address, you can make a button "Pay with Fair" or simply show the address having onclick action. This action should open user's local Fair wallet with all the values prefilled:
 
-```
+```js
 var fs_origin = 'http://127.0.0.1:8001'
 deposit.onclick = function(){
 fs_w = window.open(fs_origin+'#wallet?invoice='+id+"&address=${address}&amount=10&asset=1")
@@ -83,7 +83,7 @@ The user's wallet makes a postMessage event to the opener to notify your app's a
 
 The app that integrates Fair should set up a periodic pulling request to the daemon e.g. every 1 second:
 
-```
+```js
 FairRPC('method=receivedAndFailed', (r)=>{
   if (!r.receivedAndFailed) return
   for (obj of r.receivedAndFailed) {
@@ -131,7 +131,7 @@ Then make a request to your local Fair daemon with **following parameters carefu
 - `params[invoice]` - set the same invoice you would use to receive assets from this user, so if the payment fails it will be credited back according to this invoice.
 - `params[asset]` - id of asset to operate in. 1 for FRD, 2 for FRB and so on.
 
-```
+```js
 FairRPC('method=send&params[address]=ADDRESS&params[asset]=1&params[amount]=200&params[invoice]=INVOICE', (r)=>{
   // sent
 })

@@ -26,7 +26,7 @@ If Alice or Bob are unresponsive or gone offline, the bank can start a dispute o
 
 Now bank has accumulated $1600 in withdrawals, $1550 in deposits, and broadcasts a single batched onchain tx which roughly looks like:
 
-```
+```js
 [
   "batch",
   nonce...
